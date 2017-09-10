@@ -3,5 +3,11 @@ language: node_js
 node_js:
   - "node"
 
-before_script: cd app && chmod -R 777 node_modules
+before_script: 
+    - cd app
+    - chmod -R 777 node_modules
+    - npm install
 
+script: 
+    - npm run lint
+    - npm run start &
