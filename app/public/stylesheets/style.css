@@ -1,3 +1,14 @@
+/*colors: #5E4131  #FEEAB7   #78C0A8  #F0771A   #F0A830*/
+.all-available-colors {
+  /*dummy class for dev purposes*/
+  color: #5E4131;
+  color: #FEEAB7;
+  color: #78C0A8;
+  color: #F0771A;
+  color: #F0A830;
+}
+
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -5,4 +16,24 @@ body {
 
 a {
   color: #00B7FF;
+}
+
+.login-card {
+  background-color: #78C0A8;
+  border-radius: 10px;
+  padding: 3% 3% 2% 3%;
+}
+
+.transparent {
+  background: transparent;
+}
+
+.btn-submit {
+  padding: 2% 7%;
+}
+
+.bg-danger {
+  padding: 3%;
+  border-radius: 10px;
+  margin-bottom: 2%;
 }

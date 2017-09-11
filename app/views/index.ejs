@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>Home</title>
+    <%- include('partials/head') %>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+  <div class="container">
+    <h1 class="text-uppercase">students performance monitoring system</h1>
+    <h2>Welcome to Home</h2>
+  </div>
+  <%- include("partials/scripts") %>
   </body>
 </html>
