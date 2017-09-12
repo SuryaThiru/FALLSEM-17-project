@@ -12,8 +12,12 @@ router.post('/', function (req, res, next) {
     if (!req.body.userid && !req.body.password)
         res.render('login', {prevAction: 'loginFail'});
 
-    //check auth error and return failure
-    //if success redirect to dash
+    if (req.body.user_type === 'teacher') {
+        // auth teachers
+    }
+    else if (req.body.user_type === 'guardian') {
+        // TODO everything
+    }
 
     res.render('login', {prevAction: 'loginFail'});
 });
