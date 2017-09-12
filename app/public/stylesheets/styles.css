@@ -1,0 +1,153 @@
+@font-face {
+  font-family: Anton;
+  src: url(Anton-Regular.ttf);
+}
+
+body{
+  font-family: Anton; 
+
+  background : #78C0A8;
+  background : rgba(120, 192, 168, 1);  /*font-size: 90%;*/
+
+}
+
+.NormalCharacterStyle4
+{
+  font-family : Anton;
+  font-size : 62px;
+  color : #5E412F;
+  color : rgb(94, 65, 47);
+  text-outline : #78C0A8;
+  text-outline : rgb(120, 192, 168);
+}
+.NormalCharacterStyle2
+{
+  font-family : Anton;
+  font-size : 44px;
+  color : #5E412F;
+  color : rgb(94, 65, 47);
+}
+.NormalCharacterStyle1
+{
+  font-family : Anton;
+  font-size : 44px;
+  color : #5E412F;
+  color : rgb(94, 65, 47);
+}
+.NormalCharacterStyle3
+{
+  font-family : Anton;
+  font-size : 24px;
+  color : #FCEAB7;
+  color : rgb(252, 234, 183);
+}
+.username_field
+{
+  background : #F1A831;
+  background : rgba(241, 168, 49, 1);
+  border-radius : 38px;
+  -moz-border-radius : 38px;
+  -webkit-border-radius : 38px;
+}
+.Login_button
+{
+  background : #F1A831;
+  background : rgba(241, 168, 49, 1);
+  border-radius : 43px;
+  -moz-border-radius : 43px;
+  -webkit-border-radius : 43px;
+}
+.button_peach
+{
+  background : #FCEAB7;
+  background : rgba(252, 234, 183, 1);
+  border-radius : 20px;
+  -moz-border-radius : 20px;
+  -webkit-border-radius : 20px;
+  width: 200px;
+}
+.login_bg_box
+{
+  background : #FCEAB7;
+  background : rgba(252, 234, 183, 1);
+  border-radius : 15px;
+  -moz-border-radius : 15px;
+  -webkit-border-radius : 15px;
+}
+.bgcolour
+{
+  background : #78C0A8;
+  background : rgba(120, 192, 168, 1);
+}
+.password_field
+{
+  background : #F1A831;
+  background : rgba(241, 168, 49, 1);
+  border-radius : 42px;
+  -moz-border-radius : 42px;
+  -webkit-border-radius : 42px;
+}
+.NormalCharacterStyle
+{
+  font-family : Anton;
+  font-size : 44px;
+  color : #5E412F;
+  color : rgb(94, 65, 47);
+}
+
+.button_text{
+  color : #5E412F;
+  color : rgb(94, 65, 47);
+
+}
+
+.btn-space {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.centered {
+  margin: 10% 10% 10% 10%;
+}
+
+.jumbotron_centered{
+  margin: 10% 25%;
+
+}
+
+img{
+  max-width: 100%;
+  height: auto;
+}
+
+.card-img-top{
+  height: 50%;
+  width: 50%;
+  margin: 10% 10% 10% 10%;  
+  
+}
+
+.card{
+  background : #FCEAB7;
+  background : rgba(252, 234, 183, 1);
+  border-radius : 15px;
+  -moz-border-radius : 15px;
+  -webkit-border-radius : 15px;
+  border-radius : 35px;
+  
+}
+
+input[type=text], input[type=password] {
+   background-color: #F1A831;
+   color: #5E412F;
+   outline-color: #F1A831;
+   outline-style: none;
+   border-style: none;
+   width: 90%;
+   padding: 3%;
+   margin: 5% 5% 5% 10%;
+   border-radius : 38px;
+   -moz-border-radius : 38px;
+   -webkit-border-radius : 38px;
+ }
+}
