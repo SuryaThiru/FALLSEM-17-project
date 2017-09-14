@@ -33,23 +33,27 @@ router.post('/', function (req, res, next) {
         let row = auth(userid, passwd); // get promise
 
         row.then(result => {
-            console.log(result);
+            result = result[0];
 
-            if (!result.length) {
+            if (result.length === 0) {
                 res.render('login', {prevAction: 'loginFail'});
             }
             else {
-                if (!bcrypt.compare(passwd, result['password']))
-                    res.render('login', {prevAction: 'loginFail'});
-                else {
-                    // res.redirect('/dash');
-                    req.session.user = {
-                        userID: userid,
-                        userType: user_type
-                    };
+                bcrypt.compare(passwd, result['password'], function(err, response) {
+                    if (response) {
+                        console.log(response);
 
-                    res.send('login success!!');
-                }
+                        req.session.user = {
+                            userID: userid,
+                            userType: user_type
+                        };
+
+                        res.send('login success!!');
+                    }
+                    else {
+                        res.render('login', {prevAction: 'loginFail'});
+                    }
+                });
             }
         }).catch(err => {
             console.log('internal error: ' + err);
