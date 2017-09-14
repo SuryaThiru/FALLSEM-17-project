@@ -10,6 +10,7 @@ const session = require('express-session');
 const index = require('./routes/index');
 const login = require('./routes/login');
 const logout = require('./routes/logout');
+const dash = require('./routes/dash');
 
 const app = express();
 
@@ -35,6 +36,8 @@ app.use(session({
 app.use('/', index);
 app.use('/login', login);
 app.use('/logout', logout);
+app.use('/dash', dash);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -39,7 +39,7 @@ router.post('/', function (req, res, next) {
                 res.render('login', {prevAction: 'loginFail'});
             }
             else {
-                bcrypt.compare(passwd, result['password'], function(err, response) {
+                bcrypt.compare(passwd, result['password'], (err, response) => {
                     if (response) {
                         console.log(response);
 
@@ -48,7 +48,7 @@ router.post('/', function (req, res, next) {
                             userType: user_type
                         };
 
-                        res.send('login success!!');
+                        res.redirect('/dash');
                     }
                     else {
                         res.render('login', {prevAction: 'loginFail'});
