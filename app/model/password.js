@@ -1,7 +1,7 @@
 
 // THE FILE WAS USED FOR GENERATING PASSWORDS
 
-const url = 'postgres://wlujyglz:qbk6O5ReFPgBwzcWyl7ybRb6S7difYEh@pellefant.db.elephantsql.com:5432/wlujyglz';
+const url = require('./config.json').url;
 
 const pg = require('pg');
 const bcrypt = require('bcrypt');
@@ -9,11 +9,12 @@ const bcrypt = require('bcrypt');
 const client = new pg.Client(url);
 client.connect();
 
-// var query = client.query('select * from student;');
-// query.on('row', (row) => {console.log(row)});
+var query = client.query('select * from teacher where emp_id=97398;');
+query.on('row', (row) => {console.log(row)});
+query.on('end', (event) => {console.log(event)});
 
-var getTeachers = 'select * from teacher;';
-var addPassword = 'update teacher set password=($1) where emp_id=($2)';
+// var getTeachers = 'select * from teacher;';
+// var addPassword = 'update teacher set password=($1) where emp_id=($2)';
 
 // var query = client.query(getTeachers);
 // query.on('row', (row) => {
@@ -34,7 +35,7 @@ var addPassword = 'update teacher set password=($1) where emp_id=($2)';
 //     console.log(row);
 // })
 
-// 
+//
 // var s = 'select password from teacher where emp_id=64978;'
 // var query = client.query(s);
 // query.on('row', (row) =>{

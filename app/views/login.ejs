@@ -11,6 +11,11 @@
         <div class="col-md-12 bg-danger">Login Failed! Please try again</div>
       </div>
       <% } %>
+      <% if (prevAction === 'logout') {%>
+      <div class="row">
+        <div class="col-md-12 bg-success">Succesfully logged out</div>
+      </div>
+      <% } %>
 
 
       <div class="row">

@@ -32,7 +32,7 @@ a {
   padding: 2% 7%;
 }
 
-.bg-danger {
+.bg-danger, .bg-success {
   padding: 3%;
   border-radius: 10px;
   margin-bottom: 2%;
