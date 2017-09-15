@@ -35,16 +35,14 @@ router.post('/', function (req, res, next) {
         row.then(result => {
             result = result[0];
 
-            if (result.length === 0) {
+            if (!result) {
                 res.render('login', {prevAction: 'loginFail'});
             }
             else {
                 bcrypt.compare(passwd, result['password'], (err, response) => {
                     if (response) {
-                        console.log(response);
-
                         req.session.user = {
-                            userID: userid,
+                            userID: Number(userid),
                             userType: user_type
                         };
 
@@ -56,12 +54,12 @@ router.post('/', function (req, res, next) {
                 });
             }
         }).catch(err => {
-            console.log('internal error: ' + err);
+            console.log('internal error: login.js ' + err);
             next(err);
         });
     }
     else if (req.body.user_type === 'guardian') {
-        // TODO everything
+        // TODO redirect to performance report directly
     }
 
     // res.render('login', {prevAction: 'loginFail'});

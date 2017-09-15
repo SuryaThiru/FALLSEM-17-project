@@ -34,6 +34,7 @@ app.use(session({
 
 // the routes
 app.use('/', index);
+app.use('/index', index);
 app.use('/login', login);
 app.use('/logout', logout);
 app.use('/dash', dash);
