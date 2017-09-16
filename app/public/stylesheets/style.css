@@ -19,6 +19,20 @@ a {
 }
 
 
+/*general styles*/
+.btn-outline-primary {
+  border-color: #428bca;
+  color: #428bca;
+
+  transition: all .5s;
+}
+
+.btn-outline-primary:hover {
+  color: white;
+  background-color: #428bca;
+}
+
+
 /*styles for login*/
 .login-card {
   background-color: #78C0A8;
@@ -61,4 +75,33 @@ a {
 
   background-color: saddlebrown;
   transition-duration: 0.3s;
+}
+
+
+/*styles for classroom page*/
+.custom-nav {
+  display: flex;
+  justify-content: center;
+}
+
+.custom-nav > li > a {
+  padding: 6px;
+  border-radius: 0;
+  width: 7em;
+  text-align: center;
+}
+
+.custom-nav > li:first-child > a {
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+}
+
+.custom-nav > li:last-child > a {
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
+.tab-pane {
+  padding: 0 15px;
+  margin: 15px;
 }

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>classroom</title>
+    <%- include('partials/head') %>
+  </head>
+  <body>
+    <%- include('partials/header') %>
+    <div class="container">
+      <h2 class="text-center">Classroom</h2>
+      <hr>
+
+      <!--navs for tab-->
+      <div id="tab-nav">
+        <ul class="nav nav-pills custom-nav">
+          <li class="active"><a href="#overall" data-toggle="tab">Overall</a></li>
+          <li><a href="#individual" data-toggle="tab">Individual</a></li>
+        </ul>
+      </div>
+
+      <!--content for tabs-->
+      <div class="tab-content">
+        <div class="tab-pane active in fade" id="overall">
+          <h4>Empty for now</h4>
+          <h3>charts coming soon!</h3>
+        </div>
+
+        <div class="tab-pane fade" id="individual">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th>No</th>
+              <th>Reg id</th>
+              <th>First name</th>
+              <th>Last name</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <% info.forEach((row, index) => {%>
+            <tr>
+              <td><%= index + 1 %></td>
+              <td><%= row.register_id %></td>
+              <td><%= row.f_name %></td>
+              <td><%= row.l_name %></td>
+            </tr>
+            <% }); %>
+            </tbody>
+
+          </table>
+        </div>
+      </div>
+
+      <%- include("partials/scripts") %>
+    </div>
+  </body>
+</html>
