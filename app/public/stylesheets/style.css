@@ -19,7 +19,7 @@ a {
 }
 
 .login-card {
-  background-color: #78C0A8;
+  background-color: #FEEAB7;
   border-radius: 10px;
   padding: 3% 3% 2% 3%;
 }
@@ -36,4 +36,8 @@ a {
   padding: 3%;
   border-radius: 10px;
   margin-bottom: 2%;
+}
+
+input{
+  color: #5E4131;
 }
