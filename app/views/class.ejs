@@ -3,6 +3,7 @@
   <head>
     <title>classroom</title>
     <%- include('partials/head') %>
+    <script src="/javascripts/Chart.min.js"></script>
   </head>
   <body>
     <%- include('partials/header') %>
@@ -20,10 +21,78 @@
 
       <!--content for tabs-->
       <div class="tab-content">
-        <div class="tab-pane active in fade" id="overall">
-          <h4>Empty for now</h4>
-          <h3>charts coming soon!</h3>
+        <div class="tab-pane active in fade text-center" id="overall">
+          <h3>charts coming soon!</h3><br>
+
+          <%Object.keys(info.marksList[0]).forEach(key => {%>
+            <% if (['class_number', 'f_name', 'l_name', 'register_id', 'emp_id'].indexOf(key) != -1) return;%>
+
+            <h4>Overall performance in <%= key %></h4>
+
+          <div class="row">
+            <div class="col-md-4 col-md-offset-4 col-xs-12 col-sm-4 col-sm-offset-4">
+              <!--TODO can't align it to centre-->
+              <canvas id="<%= key %>" width="400" height="400"></canvas>
+            </div>
+          </div>
+
+          <script>
+            let ctx_<%=key%> = document.getElementById('<%= key %>').getContext('2d');
+            let data_<%=key%> = [];
+            let labels_<%=key%> = [];
+            <% info.marksList.forEach(row => {%>
+              data_<%=key%>.push(<%=row[key]%>);
+              labels_<%=key%>.push(<%=row['register_id']%>);
+            <%})%>
+            console.log(data_<%=key%>, labels_<%=key%>)
+
+
+            let graph_<%=key%> = new Chart(ctx_<%=key%>, {
+                type: 'bar',
+                data: {
+                    labels: labels_<%=key%>,
+                    datasets: [{
+                        label: 'marks in <%=key%>',
+                        data: data_<%=key%>,
+                        borderWidth: 1,
+                        backgroundColor: '#f7f388',
+                        borderColor: 'rgba(255,99,132,1)'
+                    }]
+                },
+
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    },
+                    responsive: false,
+                    maintainAspectRatio: true
+                }
+            });
+          </script>
+
+
+          <!--<table class="table table-condensed">-->
+            <!--<tr>-->
+              <!--<th>No</th>-->
+              <!--<th>Reg No</th>-->
+              <!--<th>Mark</th>-->
+            <!--</tr>-->
+            <!--<//%info.marksList.forEach( (row, index) => {%>-->
+            <!--<tr>-->
+              <!--<td></%= index + 1 %></td>-->
+              <!--<td><//%= row.register_id %></td>-->
+              <!--<td><//%= row[key] %></td>-->
+            <!--</tr>-->
+            <!--<%// }); %>-->
+          <!--</table>-->
+
+          <%});%>
         </div>
+
 
         <div class="tab-pane fade" id="individual">
           <table class="table table-striped">
@@ -37,7 +106,7 @@
             </thead>
 
             <tbody>
-            <% info.forEach((row, index) => {%>
+            <% info.infoList.forEach((row, index) => {%>
             <tr>
               <td><%= index + 1 %></td>
               <td><%= row.register_id %></td>

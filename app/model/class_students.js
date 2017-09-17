@@ -14,5 +14,18 @@ async function getStudents(class_number) {
     return result;
 }
 
+async function getSubjectOverall(class_number, empID) {
+    let cmd = 'select * from marks, student' +
+        ' where marks.register_id=student.register_id ' +
+        'and class_number=($1) and emp_id=($2)';
 
-module.exports = getStudents;
+    let {rows: result} = await client.query(cmd, [class_number, empID]);
+
+    return result;
+}
+
+
+module.exports = {
+    getStudents: getStudents,
+    getSubjectOverall: getSubjectOverall
+};

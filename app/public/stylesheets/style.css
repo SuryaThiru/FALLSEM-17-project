@@ -32,6 +32,14 @@ a {
   background-color: #428bca;
 }
 
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
 
 /*styles for login*/
 .login-card {
