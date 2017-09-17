@@ -8,6 +8,5 @@ before_script:
     - chmod -R 777 node_modules
     - npm install
 
-script: 
-    - npm run lint
+script:
     - npm run start &

@@ -18,6 +18,8 @@ a {
   color: #00B7FF;
 }
 
+
+/*styles for login*/
 .login-card {
   background-color: #FEEAB7;
   border-radius: 10px;
@@ -32,12 +34,33 @@ a {
   padding: 2% 7%;
 }
 
-.bg-danger {
-  padding: 3%;
+.bg-danger, .bg-success {
+  padding: 2%;
   border-radius: 10px;
   margin-bottom: 2%;
 }
 
 input{
   color: #5E4131;
+
+/*styles for dash*/
+.class-card {
+  display: block;
+
+  color: inherit;
+  margin: 3% 0;
+  padding: 5% 10%;
+  vertical-align: top;
+  line-height: 2em;
+
+  border: solid 1px saddlebrown;
+  border-radius: 10px;
+}
+
+.class-card:focus, .class-card:hover {
+  color: white;
+  text-decoration: inherit;
+
+  background-color: saddlebrown;
+  transition-duration: 0.3s;
 }

@@ -9,6 +9,8 @@ const session = require('express-session');
 // the modules for routes
 const index = require('./routes/index');
 const login = require('./routes/login');
+const logout = require('./routes/logout');
+const dash = require('./routes/dash');
 
 const app = express();
 
@@ -23,9 +25,20 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// configure session
+app.use(session({
+    secret: 'secret session code',
+    saveUninitialized: true,
+    resave: false
+}));
+
 // the routes
 app.use('/', index);
+app.use('/index', index);
 app.use('/login', login);
+app.use('/logout', logout);
+app.use('/dash', dash);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
