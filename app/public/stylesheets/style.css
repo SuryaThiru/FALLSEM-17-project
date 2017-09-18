@@ -11,13 +11,60 @@
 
 body {
   padding: 50px;
+  background : #78C0A8;  
+  background : rgba(120, 192, 168, 1); 
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  
 }
 
 a {
-  color: #00B7FF;
+  color: #5E4131;
 }
 
+img{
+  max-width: 100%;
+  height: auto;
+}
+
+.inputs {
+
+  border: none;
+  background-color: #F0771A;
+  color: #FFFFFF;
+}
+
+.select {
+  
+  -webkit-border-radius:4px;
+  -moz-border-radius:4px;
+  border-radius:4px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  color:#FFFFFF;
+  border:none;
+  outline:none;
+  display: inline-block;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  appearance:none;
+  cursor:pointer; 
+  background:#F0771A url(https://cdn1.iconfinder.com/data/icons/universal-icons-set-for-web-and-mobile/100/controls_0-12-512.png) no-repeat right center; /*we gotta replace this img*/
+  background-size: 40px 37px; 
+}
+
+.form-control::-moz-placeholder{
+  color:#FFFFFF;opacity:1}
+
+.form-control:-ms-input-placeholder{
+  color:#FFFFFF}
+
+.form-control::-webkit-input-placeholder{
+  color:#FFFFFF}
+
+.top-buffer{
+  margin-top: 10%;
+}
 
 /*styles for login*/
 .login-card {
@@ -40,8 +87,22 @@ a {
   margin-bottom: 2%;
 }
 
-input{
-  color: #5E4131;
+.btn-space {
+  margin: 20% 5% 0% 5%;
+}
+
+.button_peach
+{
+  background : #FCEAB7;
+  /* background : rgba(252, 234, 183, 1);
+  border-radius : 20px;
+  -moz-border-radius : 20px;
+  -webkit-border-radius : 20px;*/
+  
+  width: 200px;
+  border: none; 
+}
+
 
 /*styles for dash*/
 .class-card {
@@ -64,3 +125,8 @@ input{
   background-color: saddlebrown;
   transition-duration: 0.3s;
 }
+
+@media (max-width: 480px) {
+
+  
+  }
