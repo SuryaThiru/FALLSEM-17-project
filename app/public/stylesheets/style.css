@@ -26,11 +26,15 @@ img{
   height: auto;
 }
 
-.inputs {
+input[type="text"], input[type="password"], input[type="submit"] {
 
   border: none;
   background-color: #F0771A;
   color: #FFFFFF;
+}
+
+input:focus{
+  background: #F0771A;
 }
 
 .select {
