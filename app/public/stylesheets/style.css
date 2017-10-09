@@ -1,24 +1,28 @@
 /*colors: #5E4131  #FEEAB7   #78C0A8  #F0771A   #F0A830*/
 .all-available-colors {
   /*dummy class for dev purposes*/
-  color: #5E4131;
+  /* color: #5E4131;
   color: #FEEAB7;
   color: #78C0A8;
   color: #F0771A;
-  color: #F0A830;
+  color: #F0A830; */
+  color: #e74c3c;
+  color: #474e5d;
+  color: #ffffff;
+  color: #2f2f2f;
 }
 
-
+/* 
 body {
   padding: 50px;
   background : #78C0A8;  
   background : rgba(120, 192, 168, 1); 
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   
-}
+} */
 
 a {
-  color: #5E4131;
+  color: #e74c3c;
 }
 
 img{
@@ -29,13 +33,13 @@ img{
 input[type="text"], input[type="password"], input[type="submit"] {
 
   border: none;
-  background-color: #F0771A;
+  background: #474e5d;
   color: #FFFFFF;
 }
 
-input:focus{
+/* input:focus{
   background: #F0771A;
-}
+} */
 
 .select {
   
@@ -53,7 +57,7 @@ input:focus{
   -moz-appearance:none;
   appearance:none;
   cursor:pointer; 
-  background:#F0771A url(https://cdn1.iconfinder.com/data/icons/universal-icons-set-for-web-and-mobile/100/controls_0-12-512.png) no-repeat right center; /*we gotta replace this img*/
+  background:#474e5d url(https://cdn1.iconfinder.com/data/icons/universal-icons-set-for-web-and-mobile/100/controls_0-12-512.png) no-repeat right center; /*we gotta replace this img*/
   background-size: 40px 37px; 
 }
 
@@ -65,10 +69,6 @@ input:focus{
 
 .form-control::-webkit-input-placeholder{
   color:#FFFFFF}
-
-.top-buffer{
-  margin-top: 10%;
-}
 
 /*general styles*/
 .btn-outline-primary {
@@ -94,8 +94,8 @@ input:focus{
 
 /*styles for login*/
 .login-card {
-  background-color: #FEEAB7;
-  border-radius: 10px;
+  background-color: #e74c3c;
+  border-radius: 0px;
   padding: 3% 3% 2% 3%;
 }
 
@@ -117,17 +117,6 @@ input:focus{
   margin: 20% 5% 0% 5%;
 }
 
-.button_peach
-{
-  background : #FCEAB7;
-  /* background : rgba(252, 234, 183, 1);
-  border-radius : 20px;
-  -moz-border-radius : 20px;
-  -webkit-border-radius : 20px;*/
-  
-  width: 200px;
-  border: none; 
-}
 
 
 /*styles for dash*/
@@ -153,6 +142,7 @@ input:focus{
 }
 
 @media (max-width: 480px) {
+ 
 
   
   }
@@ -184,3 +174,63 @@ input:focus{
   padding: 0 15px;
   margin: 15px;
 }
+
+/* bg1 */
+body {
+ 
+  font-family: 'Anton', sans-serif;
+  
+  line-height: 1.8;
+  color: #f5f6f7;
+}
+p {font-size: 16px;}
+.margin {margin-bottom: 45px;}
+.bg-1 { 
+  background-color: #e74c3c; /* red */
+  color: #ffffff;
+}
+.bg-2 { 
+  background-color: #474e5d; /* Dark Blue */
+  color: #ffffff;
+}
+.bg-3 { 
+  background-color: #ffffff; /* White */
+  color: #555555;
+}
+.bg-4 { 
+  background-color: #2f2f2f; /* Black Gray */
+  color: #fff;
+}
+.container-fluid {
+  padding-top: 10%;
+  padding-bottom: 10%;
+}
+.navbar {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border: 0;
+  border-radius: 0;
+  margin-bottom: 0;
+  font-size: 12px;
+  letter-spacing: 5px;
+}
+.navbar-nav  li a:hover {
+  color: #1abc9c !important;
+}
+
+.btn{
+  background: #ffffff;
+  border-radius: 0; 
+  width: 25%;
+  
+}
+
+.top_margin{
+  margin-top: 10%;
+  
+}
+
+.bigger_text{
+  font-size: 200%;
+}
+
