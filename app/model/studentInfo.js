@@ -31,7 +31,7 @@ function getRequiredColumnFields() {
     let fields = ['quarterly', 'halfyearly', 'annual', 'internal', 'curiousity', 'dedication', 'punctuality',
         'behaviour', 'enthusiasm'];
 
-    return qargs.join(', ');
+    return fields.join(', ');
 }
 
 module.exports = getStudentInfo;

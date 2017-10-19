@@ -65,7 +65,6 @@ router.get('/:cid/:sid', function (req, res, next) {    //cid - class id, sid - 
             info.studInfo = val[0];
             info.classStat = val[1];
 
-            console.log(info);
             res.render('student', {info: info});
         }).catch(err => {
             console.log('internal error: class.js ' + err);
