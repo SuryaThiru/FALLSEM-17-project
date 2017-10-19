@@ -30,29 +30,39 @@ async function getSubjectOverall(class_number, empID) {
 
 async function getSubjectStats(class_number, empID) {
     // get highest and average mark in each subject
-    // prepare the required column names
-    let fields = ['quarterly', 'halfyearly', 'annual', 'internal', 'curiousity', 'dedication', 'enthusiasm'];
-    qargs = fields.map((val, ind) => {
-       let str = `max(${val}), avg(${val})`
-       if (ind !== fields.length - 1)
-           str += ',';
-
-       return str;
-    });
-    qargs = qargs.join(' ');
+    qargs = getRequiredColumnFields();
 
     let cmd = 'select ' + qargs + ' from marks, student' +
         ' where marks.register_id=student.register_id ' +
         'and class_number=($1) and emp_id=($2)';
-    console.log(cmd);
     let {rows: result} = await client.query(cmd, [class_number, empID]);
+    result = result[0];
+
+    // convert all values to rounded integers
+    for (key in result) {
+        result[key] = Math.round(Number(result[key]));
+    }
 
     return result;
 }
 
-getSubjectStats(801, 40150).then(res => console.log(res))
+function getRequiredColumnFields() {
+    // prepare the required column names
+    let fields = ['quarterly', 'halfyearly', 'annual', 'internal', 'curiousity', 'dedication', 'punctuality',
+        'behaviour', 'enthusiasm'];
+    qargs = fields.map((val, ind) => {
+        let str = `max(${val}) max_${val}, avg(${val}) avg_${val}`;
+    if (ind !== fields.length - 1)
+        str += ',';
+
+    return str;
+});
+
+    return qargs.join(' ');
+}
 
 module.exports = {
     getStudents: getStudents,
-    getSubjectOverall: getSubjectOverall
+    getSubjectOverall: getSubjectOverall,
+    getSubjectStats: getSubjectStats
 };

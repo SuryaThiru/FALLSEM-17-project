@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {getStudents} = require('../model/class_students');
 const {getSubjectOverall} = require('../model/class_students');
+const {getSubjectStats} = require('../model/class_students');
 const getStudentInfo = require('../model/studentInfo');
 
 
@@ -56,17 +57,20 @@ router.get('/:cid/:sid', function (req, res, next) {    //cid - class id, sid - 
         else if ((cno != req.session.user.leadingClass) && (req.session.user.classes.indexOf(cno) === -1))
             res.redirect('/dash');
 
-        let row = getStudentInfo(sno, req.session.user.userID);
+        let studInfo = getStudentInfo(sno, req.session.user.userID);
+        let classStat = getSubjectStats(cno, req.session.user.userID);
 
-        row.then(result => {
-            if (!result) {
-                res.redirect('dash');
-            }
-            else {
-                console.log(result);
-                res.render('student', {info: result});
-            }
-        });
+        Promise.all([studInfo, classStat]).then(val => {
+            info = {};
+            info.studInfo = val[0];
+            info.classStat = val[1];
+
+            console.log(info);
+            res.render('student', {info: info});
+        }).catch(err => {
+            console.log('internal error: class.js ' + err);
+            next(err);
+        })
     }
 });
 

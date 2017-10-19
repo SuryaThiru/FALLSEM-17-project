@@ -1,20 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>classroom</title>
-    <%- include('partials/head') %>
-    <script src="/javascripts/Chart.min.js"></script>
+  <title>student report</title>
+   <%- include('partials/head') %>
+  <script src="/javascripts/Chart.min.js"></script>
 </head>
 <body>
-    <%- include('partials/header') %>
+  <%- include('partials/header') %>
 
-    <div class="container">
-        <h2 class="text-center">Student report</h2>
-        <hr>
+  <div class="container">
+    <h2 class="text-center">Student report</h2>
+    <hr>
 
-        <h4><span class="float-left"><%= info.info.register_id %></span><span
-                    class="float-right"><%= info.info.l_name %>, <%= info.info.f_name %></span></h4>
+    <div class="row">
+      <h3><span class="float-left"><%= info.studInfo.info.register_id %></span><span
+                class="float-right"><%= info.studInfo.info.l_name %>, <%= info.studInfo.info.f_name %></span></h3>
+    </div>
+    <br>
+
+    <div class="row">
+      <!--add charts to the document-->
+      <%Object.keys(info.studInfo.marks).forEach(key => {%>
+
+      <h4>Performance in <%= key %></h4>
+
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4 col-xs-12 col-sm-4 col-sm-offset-4">
+          <!--TODO can't align it to centre-->
+          <canvas id="<%= key %>" width="400" height="400"></canvas>
+        </div>
+      </div>
+
+      <script>
+          let ctx_<%=key%> = document.getElementById('<%= key %>').getContext('2d');
+          let data_<%=key%> = [];
+          let labels_<%=key%> = ['max class mark', 'scored mark', 'average class mark'];
+
+          data_<%=key%>.push(<%=info.classStat['max_' + key]%>);
+          data_<%=key%>.push(<%=info.studInfo.marks[key]%>);
+          data_<%=key%>.push(<%=info.classStat['avg_' + key]%>);
+
+
+          let graph_<%=key%> = new Chart(ctx_<%=key%>, {
+              type: 'bar',
+              data: {
+                  labels: labels_<%=key%>,
+                  datasets: [{
+                      label: 'marks in <%=key%>',
+                      data: data_<%=key%>,
+                      borderWidth: 1,
+                      backgroundColor: ['#93ffaf', '#ff6464', '#6596ef']
+                  }]
+              },
+
+              options: {
+                  scales: {
+                      yAxes: [{
+                          ticks: {
+                              beginAtZero:true
+                          }
+                      }]
+                  },
+                  responsive: false,
+                  maintainAspectRatio: true,
+                  legend: {
+                      display: false
+                  }
+              }
+          });
+      </script>
+        <%});%>
+      </div>
     </div>
 
+
+  <%- include("partials/scripts") %>
 </body>
 </html>

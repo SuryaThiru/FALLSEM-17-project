@@ -14,7 +14,8 @@ async function getStudentInfo(regid, empid) {
     let cmd = 'select register_id, f_name, l_name from student where register_id=($1)';
     let {rows: info} = await client.query(cmd, [regid]);
 
-    cmd = 'select * from marks where register_id=($1) and emp_id=($2)';
+    let qargs = getRequiredColumnFields();
+    cmd = 'select ' + qargs + ' from marks where register_id=($1) and emp_id=($2)';
     let {rows: marks} = await client.query(cmd, [regid, empid]);
 
     result = {
@@ -23,6 +24,14 @@ async function getStudentInfo(regid, empid) {
     };
 
     return result;
+}
+
+function getRequiredColumnFields() {
+    // prepare the required column names
+    let fields = ['quarterly', 'halfyearly', 'annual', 'internal', 'curiousity', 'dedication', 'punctuality',
+        'behaviour', 'enthusiasm'];
+
+    return qargs.join(', ');
 }
 
 module.exports = getStudentInfo;

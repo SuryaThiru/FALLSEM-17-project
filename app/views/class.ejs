@@ -22,8 +22,8 @@
       <!--content for tabs-->
       <div class="tab-content">
         <div class="tab-pane active in fade text-center" id="overall">
-          <h3>charts coming soon!</h3><br>
 
+          <!--add charts to the document-->
           <%Object.keys(info.marksList[0]).forEach(key => {%>
             <% if (['class_number', 'f_name', 'l_name', 'register_id', 'emp_id'].indexOf(key) != -1) return;%>
 
@@ -55,8 +55,7 @@
                         label: 'marks in <%=key%>',
                         data: data_<%=key%>,
                         borderWidth: 1,
-                        backgroundColor: '#f7f388',
-                        borderColor: 'rgba(255,99,132,1)'
+                        backgroundColor: '#93dad0'
                     }]
                 },
 
