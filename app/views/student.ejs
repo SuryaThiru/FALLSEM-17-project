@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>classroom</title>
+    <%- include('partials/head') %>
+    <script src="/javascripts/Chart.min.js"></script>
+</head>
+<body>
+    <%- include('partials/header') %>
+
+    <div class="container">
+        <h2 class="text-center">Student report</h2>
+        <hr>
+
+        <h4><span class="float-left"><%= info.info.register_id %></span><span
+                    class="float-right"><%= info.info.l_name %>, <%= info.info.f_name %></span></h4>
+    </div>
+
+</body>
+</html>

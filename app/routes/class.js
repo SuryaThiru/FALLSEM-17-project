@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {getStudents} = require('../model/class_students');
 const {getSubjectOverall} = require('../model/class_students');
+const getStudentInfo = require('../model/studentInfo');
 
 
 // GET class page
@@ -12,9 +13,10 @@ router.get('/:id/', function (req, res, next) {
         let cno = Number(req.params.id);
         let info = {};
 
+        // validate user
         if (!cno)
             res.redirect('/dash');
-        else if ((cno != req.session.user.leadingClass) && (req.session.user.classes.indexOf(cno) == -1))
+        else if ((cno != req.session.user.leadingClass) && (req.session.user.classes.indexOf(cno) === -1))
             res.redirect('/dash');
 
         // TODO seperate view for class teachers
@@ -35,6 +37,35 @@ router.get('/:id/', function (req, res, next) {
 
         Promise.all([students, subjectOverall]).then(vals => {
             res.render('class', {info: info});
+        });
+    }
+});
+
+
+router.get('/:cid/:sid', function (req, res, next) {    //cid - class id, sid - student id
+    if (!req.session.user)
+        res.redirect('/login');
+    else {
+        let cno = Number(req.params.cid);
+        let sno = Number(req.params.sid);
+
+        // validate user
+        // TODO check student under class
+        if (!cno || !sno)
+            res.redirect('/dash');
+        else if ((cno != req.session.user.leadingClass) && (req.session.user.classes.indexOf(cno) === -1))
+            res.redirect('/dash');
+
+        let row = getStudentInfo(sno, req.session.user.userID);
+
+        row.then(result => {
+            if (!result) {
+                res.redirect('dash');
+            }
+            else {
+                console.log(result);
+                res.render('student', {info: result});
+            }
         });
     }
 });

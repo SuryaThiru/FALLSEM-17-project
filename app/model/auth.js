@@ -1,3 +1,7 @@
+/*
+    used for authorising user during login
+ */
+
 const {Client} = require('pg');
 
 const host = require('./config.json').url;

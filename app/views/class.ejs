@@ -73,27 +73,11 @@
                 }
             });
           </script>
-
-
-          <!--<table class="table table-condensed">-->
-            <!--<tr>-->
-              <!--<th>No</th>-->
-              <!--<th>Reg No</th>-->
-              <!--<th>Mark</th>-->
-            <!--</tr>-->
-            <!--<//%info.marksList.forEach( (row, index) => {%>-->
-            <!--<tr>-->
-              <!--<td></%= index + 1 %></td>-->
-              <!--<td><//%= row.register_id %></td>-->
-              <!--<td><//%= row[key] %></td>-->
-            <!--</tr>-->
-            <!--<%// }); %>-->
-          <!--</table>-->
-
           <%});%>
         </div>
 
 
+        <!--individual table-->
         <div class="tab-pane fade" id="individual">
           <table class="table table-striped">
             <thead>
@@ -106,14 +90,14 @@
             </thead>
 
             <tbody>
-            <% info.infoList.forEach((row, index) => {%>
-            <tr>
-              <td><%= index + 1 %></td>
-              <td><%= row.register_id %></td>
-              <td><%= row.f_name %></td>
-              <td><%= row.l_name %></td>
-            </tr>
-            <% }); %>
+              <% info.infoList.forEach((row, index) => {%>
+              <tr class="clickable-row" data-href="<%= row.register_id %>">
+                <td><%= index + 1 %></td>
+                <td><%= row.register_id %></td>
+                <td><%= row.f_name %></td>
+                <td><%= row.l_name %></td>
+              </tr>
+              <% }); %>
             </tbody>
 
           </table>

@@ -73,7 +73,7 @@ a {
   vertical-align: top;
   line-height: 2em;
 
-  border: solid 1px saddlebrown;
+  border: solid 1px #428bca;
   border-radius: 10px;
 }
 
@@ -81,7 +81,7 @@ a {
   color: white;
   text-decoration: inherit;
 
-  background-color: saddlebrown;
+  background-color: #428bca;
   transition-duration: 0.3s;
 }
 
@@ -112,4 +112,8 @@ a {
 .tab-pane {
   padding: 0 15px;
   margin: 15px;
+}
+
+.clickable-row {
+  cursor: pointer;
 }
