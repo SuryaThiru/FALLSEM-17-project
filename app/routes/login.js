@@ -13,7 +13,8 @@ router.get('/', function(req, res, next) {
         res.render('login', {prevAction: 'logout'});
 
     if (req.session.user)
-        res.send('user already logged in');
+        // res.send('user already logged in');
+        res.redirect('dash');
     else
         res.render('login', {prevAction: null});
 });

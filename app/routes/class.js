@@ -3,7 +3,7 @@ const router = express.Router();
 const {getStudents} = require('../model/class_students');
 const {getSubjectOverall} = require('../model/class_students');
 const {getSubjectStats} = require('../model/class_students');
-const getStudentInfo = require('../model/studentInfo');
+const {getStudentInfo} = require('../model/studentInfo');
 
 
 // GET class page

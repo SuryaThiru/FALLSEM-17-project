@@ -26,6 +26,32 @@ async function getStudentInfo(regid, empid) {
     return result;
 }
 
+async function getAllStudentInfo(regid) {
+    // get student marks under all teachers
+    let qargs = getRequiredColumnFields() + ', emp_id ';
+    let cmd = 'select ' + qargs + ' from marks where register_id=($1)';
+    let {rows} = await client.query(cmd, [regid]);
+
+    return rows;
+}
+
+async function getStudentAttendance(regid) {
+    let cmd = 'select att.count attended, cnt.count total from ' +
+        '(select count(*) from attendance where register_id=($1)) cnt, ' +
+        '(select count(*) from attendance where register_id=($1) and attendance=true) att';
+    let {rows: result} = await client.query(cmd, [regid]);
+
+    console.log(result[0]);
+    return result[0];
+}
+
+async function getPersonalInfo(regid) {
+    let cmd = 'select * from personal_info where register_id=($1)';
+    let {rows: result} =  await client.query(cmd, [regid]);
+
+    return result[0];
+}
+
 function getRequiredColumnFields() {
     // prepare the required column names
     let fields = ['quarterly', 'halfyearly', 'annual', 'internal', 'curiousity', 'dedication', 'punctuality',
@@ -34,4 +60,9 @@ function getRequiredColumnFields() {
     return fields.join(', ');
 }
 
-module.exports = getStudentInfo;
+module.exports = {
+    getStudentInfo: getStudentInfo,
+    getPersonalInfo: getPersonalInfo,
+    getAllStudentInfo: getAllStudentInfo,
+    getStudentAttendance: getStudentAttendance
+};

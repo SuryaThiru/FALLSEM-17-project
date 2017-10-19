@@ -40,6 +40,10 @@ a {
   float: right;
 }
 
+.tab-content {
+  padding-top: 20px;
+}
+
 
 /*styles for login*/
 .login-card {
@@ -116,4 +120,21 @@ a {
 
 .clickable-row {
   cursor: pointer;
+}
+
+
+/*styles for leadclassstudent page*/
+.details {
+  padding: 2% 0;
+}
+
+.details > p {
+  padding-bottom: 2%;
+  font-size: 1.5em;
+  padding-left: 3%;
+  padding-right: 5%;
+}
+
+.personal-info-title {
+
 }
