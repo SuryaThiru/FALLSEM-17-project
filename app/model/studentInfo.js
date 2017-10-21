@@ -41,7 +41,6 @@ async function getStudentAttendance(regid) {
         '(select count(*) from attendance where register_id=($1) and attendance=true) att';
     let {rows: result} = await client.query(cmd, [regid]);
 
-    console.log(result[0]);
     return result[0];
 }
 
