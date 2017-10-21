@@ -1,7 +1,8 @@
 "use strict";
 
 const express = require('express');
-const auth = require('../model/auth');
+const {authTeacher} = require('../model/auth');
+const {authGuardian} = require('../model/auth');
 const bcrypt = require('bcrypt');
 
 const router = express.Router();
@@ -31,11 +32,9 @@ router.post('/', function (req, res, next) {
         res.render('login', {prevAction: 'loginFail'});
 
     if (user_type === 'teacher') {
-        let row = auth(userid, passwd); // get promise
+        let row = authTeacher(userid, passwd); // get promise
 
         row.then(result => {
-            result = result[0];
-
             if (!result) {
                 res.render('login', {prevAction: 'loginFail'});
             }
@@ -59,11 +58,32 @@ router.post('/', function (req, res, next) {
             next(err);
         });
     }
-    else if (req.body.user_type === 'guardian') {
-        // TODO redirect to performance report directly
-    }
+    else if (user_type === 'guardian') {
+        let row = authGuardian(userid, passwd);
 
-    // res.render('login', {prevAction: 'loginFail'});
+        row.then(result => {
+            if (!result)
+                res.render('login', {prevAction: 'loginFail'});
+            else {
+            bcrypt.compare(String(passwd), result['password'], (err, response) => {
+                if (response) {
+                    req.session.user = {
+                        userID: Number(userid),
+                        userType: user_type
+                    };
+
+                    res.redirect('/guardian');
+                }
+                else {
+                    res.render('login', {prevAction: 'loginFail'});
+                }
+                });
+            }
+        }).catch(err => {
+            console.log('internal error: login.js ' + err);
+            next(err);
+        });
+    }
 });
 
 module.exports = router;

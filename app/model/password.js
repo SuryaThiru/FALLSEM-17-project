@@ -1,21 +1,21 @@
 
 // THE FILE WAS USED FOR GENERATING PASSWORDS
-
-const url = require('./config.json').url;
-
-const pg = require('pg');
 const bcrypt = require('bcrypt');
+const {Client} = require('pg');
 
-const client = new pg.Client(url);
+const host = require('./config.json').url;
+const client = new Client({
+    connectionString: host
+});
 client.connect();
 
-var query = client.query('select * from teacher where emp_id=97398;');
-query.on('row', (row) => {console.log(row)});
-query.on('end', (event) => {console.log(event)});
 
+// var val = client.query('select * from teacher where emp_id=97398;');
+// val.then(res => console.log(res.rows));
 // var getTeachers = 'select * from teacher;';
 // var addPassword = 'update teacher set password=($1) where emp_id=($2)';
 
+// old pg module
 // var query = client.query(getTeachers);
 // query.on('row', (row) => {
 //     bcrypt.hash(row['f_name'].toLowerCase(), 5, function (err, hash) {
@@ -47,3 +47,22 @@ query.on('end', (event) => {console.log(event)});
 //         }
 // });
 // })
+
+
+// update passwd for guardian
+let guardians = client.query('select * from guardian');
+let setPasswd = 'update guardian set password=($1) where register_id=($2)';
+
+guardians.then(res => {
+        res.rows.forEach(row => {
+            bcrypt.hash(String(row['register_id']), 5, function (err, hash) {
+                if (err)
+                    console.log(err);
+                else {
+                    vals = [hash, row['register_id']];
+                    // client.query(setPasswd, vals);
+                }
+
+            });
+        });
+});

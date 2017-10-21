@@ -42,7 +42,6 @@ router.get('/:id/', function (req, res, next) {
     }
 });
 
-
 router.get('/:cid/:sid', function (req, res, next) {    //cid - class id, sid - student id
     if (!req.session.user)
         res.redirect('/login');
