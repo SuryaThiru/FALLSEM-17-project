@@ -28,7 +28,7 @@ async function getInteraction(reg_id) {
     let emp_id = await getEmpIDOfClassTeacher(reg_id);
 
     // get interactions
-    let cmd = 'select * from interact_with where register_id=($1) and emp_id=($2)';
+    let cmd = 'select * from interact_with where register_id=($1) and emp_id=($2) order by timestamp';
     let vals = [reg_id, emp_id];
 
     let {rows} = await client.query(cmd, vals);
@@ -44,7 +44,7 @@ async function getEmpIDOfClassTeacher(reg_id) {
     return emp_id;
 }
 
-// getInteraction(7715).then(res => console.log(res))
+getInteraction(7715).then(res => console.log(res))
 
 module.exports = {
     addInteraction: addInteraction,

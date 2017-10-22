@@ -135,6 +135,39 @@ a {
   padding-right: 5%;
 }
 
-.personal-info-title {
 
+/*styles for interactions page*/
+.chat-area {
+  margin: 5%;
+  padding: 1%;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #e0f3fa 0%,#d8f0fc 50%,#b8e2f6 51%,#b6dffd 100%);
+}
+
+.chat-row {
+  margin: 0.5% 0.5%;
+  padding: 1% 0.5%;
+  border-radius: 5px;
+}
+
+.chat-msg {
+  display: inline-block;
+  border-radius: 5px;
+  padding: 3%;
+}
+
+.sent {
+  background: linear-gradient(135deg, #f8ffe8 0%,#e3f5ab 33%,#b7df2d 100%);
+}
+
+.received {
+  background: linear-gradient(135deg, #fefcea 0%,#f1da36 100%);
+}
+
+.chat-input {
+  width:80%;
+}
+
+.chat-btn {
+  width: 20%;
 }
