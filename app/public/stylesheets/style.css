@@ -134,13 +134,9 @@ input[type="text"], input[type="password"], input[type="submit"] {
   text-align: center;
   line-height: 2em;
   font-size: 1.2em;
-
-<<<<<<< HEAD
+  
   /* border: solid 1px saddlebrown; */
   border: solid 2px #ffffff;
-=======
-  border: solid 1px #428bca;
->>>>>>> origin/dev
   border-radius: 10px;
 }
 
@@ -148,11 +144,7 @@ input[type="text"], input[type="password"], input[type="submit"] {
   color: white;
   text-decoration: inherit;
 
-<<<<<<< HEAD
   background-color: #e73626;
-=======
-  background-color: #428bca;
->>>>>>> origin/dev
   transition-duration: 0.3s;
 }
 
@@ -190,7 +182,6 @@ input[type="text"], input[type="password"], input[type="submit"] {
   margin: 15px;
 }
 
-<<<<<<< HEAD
 /* bg1 */
 body {
  
@@ -253,7 +244,6 @@ p {font-size: 16px;}
   font-size: 200%;
 }
 
-=======
 .clickable-row {
   cursor: pointer;
 }
@@ -307,4 +297,3 @@ p {font-size: 16px;}
 .chat-btn {
   width: 20%;
 }
->>>>>>> origin/dev
