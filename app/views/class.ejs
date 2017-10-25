@@ -21,15 +21,16 @@
 
       <!--content for tabs-->
       <div class="tab-content">
+        <!--overall charts-->
         <div class="tab-pane active in fade text-center" id="overall">
-          <h3>charts coming soon!</h3><br>
 
+          <!--add charts to the document-->
           <%Object.keys(info.marksList[0]).forEach(key => {%>
             <% if (['class_number', 'f_name', 'l_name', 'register_id', 'emp_id'].indexOf(key) != -1) return;%>
 
+          <div class="row">
             <h4>Overall performance in <%= key %></h4>
 
-          <div class="row">
             <div class="col-md-4 col-md-offset-4 col-xs-12 col-sm-4 col-sm-offset-4">
               <!--TODO can't align it to centre-->
               <canvas id="<%= key %>" width="400" height="400"></canvas>
@@ -55,8 +56,7 @@
                         label: 'marks in <%=key%>',
                         data: data_<%=key%>,
                         borderWidth: 1,
-                        backgroundColor: '#f7f388',
-                        borderColor: 'rgba(255,99,132,1)'
+                        backgroundColor: '#93dad0'
                     }]
                 },
 
@@ -73,27 +73,11 @@
                 }
             });
           </script>
-
-
-          <!--<table class="table table-condensed">-->
-            <!--<tr>-->
-              <!--<th>No</th>-->
-              <!--<th>Reg No</th>-->
-              <!--<th>Mark</th>-->
-            <!--</tr>-->
-            <!--<//%info.marksList.forEach( (row, index) => {%>-->
-            <!--<tr>-->
-              <!--<td></%= index + 1 %></td>-->
-              <!--<td><//%= row.register_id %></td>-->
-              <!--<td><//%= row[key] %></td>-->
-            <!--</tr>-->
-            <!--<%// }); %>-->
-          <!--</table>-->
-
           <%});%>
         </div>
 
 
+        <!--individual table-->
         <div class="tab-pane fade" id="individual">
           <table class="table table-striped">
             <thead>
@@ -106,14 +90,14 @@
             </thead>
 
             <tbody>
-            <% info.infoList.forEach((row, index) => {%>
-            <tr>
-              <td><%= index + 1 %></td>
-              <td><%= row.register_id %></td>
-              <td><%= row.f_name %></td>
-              <td><%= row.l_name %></td>
-            </tr>
-            <% }); %>
+              <% info.infoList.forEach((row, index) => {%>
+              <tr class="clickable-row" data-href="<%= row.register_id %>">
+                <td><%= index + 1 %></td>
+                <td><%= row.register_id %></td>
+                <td><%= row.f_name %></td>
+                <td><%= row.l_name %></td>
+              </tr>
+              <% }); %>
             </tbody>
 
           </table>

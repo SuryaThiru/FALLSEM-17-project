@@ -1,3 +1,7 @@
+/*
+    fetch info about classes of a teacher
+ */
+
 const {Client} = require('pg');
 
 const host = require('./config.json').url;
@@ -37,11 +41,11 @@ async function getClassDetails(empID) {
                 class_number: cno,
                 class_strength:rows[0]['count']
             };
-        else
-            result.classList.push({
-                class_number: cno,
-                class_strength: rows[0]['count']
-            });
+
+        result.classList.push({
+            class_number: cno,
+            class_strength: rows[0]['count']
+        });
     }
 
     return result;

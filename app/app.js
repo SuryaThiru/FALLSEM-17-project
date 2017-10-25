@@ -12,6 +12,9 @@ const login = require('./routes/login');
 const logout = require('./routes/logout');
 const dash = require('./routes/dash');
 const classRoute = require('./routes/class');
+const leadClass = require('./routes/leadclass');
+const guardian = require('./routes/guardian');
+const interaction = require('./routes/interaction');
 
 const app = express();
 
@@ -40,6 +43,9 @@ app.use('/login', login);
 app.use('/logout', logout);
 app.use('/dash', dash);
 app.use('/class', classRoute);
+app.use('/leadclass', leadClass);
+app.use('/guardian', guardian);
+app.use('/interactions', interaction);
 
 
 // catch 404 and forward to error handler

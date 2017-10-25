@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Interactions</title>
+  <%- include('partials/head') %>
+</head>
+<body>
+  <header class="container">
+    <p class="text-right">
+      <a class="btn btn-outline-primary btn-lg float-right" href="/logout">Log out</a>
+    </p>
+  </header>
+
+  <div class="container">
+    <h2 class="text-center">Conversations</h2>
+    <hr>
+
+    <!--area for displaying and posting messages-->
+    <div class="chat-area">
+      <!--<div class="chat-row">-->
+        <!--<div class="chat-msg sent">Test message 1</div>-->
+      <!--</div>-->
+
+      <!--<div class="chat-row">-->
+        <!--<div class="chat-msg received">Test message 2</div>-->
+      <!--</div>-->
+
+      <%data.messages.forEach(key => {%>
+        <%if ((key.post_by_teacher && data.byTeacher) || (!key.post_by_teacher && !data.byTeacher)) {%>
+        <div class="chat-row">
+          <div class="chat-msg sent"><%= key.post %></div>
+        </div>
+        <%} else {%>
+        <div class="chat-row">
+          <div class="chat-msg received"><%= key.post %></div>
+        </div>
+        <%}%>
+      <%});%>
+
+      <form action="/interactions" method="post" class="form-inline chat-send">
+        <div class="form-group"><input type="text" class="form-control" placeholder="Type your message here" name="message"></div>
+        <div class="form-group"><input type="number" name="reg_id" value="<%=data.regid%>" hidden></div>
+
+        <% if (data.byTeacher) {%>
+        <div class="form-group"><input type="radio" name="postByTeacher" hidden checked></div>
+        <%} else {%>
+        <div class="form-group"><input type="radio" name="postByTeacher" hidden></div>
+        <%}%>
+
+        <div class="form-group"><input type="submit" class="form-control" value="send"></div>
+      </form>
+    </div>
+
+  </div>
+
+</body>
+</html>

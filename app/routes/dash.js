@@ -21,6 +21,8 @@ router.get('/', function (req, res, next) {
                 info.teacherInfo = vals[0];
                 info.classDetails = vals[1];
 
+                // i know i should've set the session after login but, come on, querying twice?
+                // who am i kidding, i only noticed when it's too late
                 req.session.user.leadingClass = info.classDetails.leadingClass.class_number;
                 req.session.user.classes = info.classDetails.classList.map(arr => {
                     return arr.class_number;

@@ -1,3 +1,7 @@
+/*
+    get teacher information
+ */
+
 const {Client} = require('pg');
 
 const host = require('./config.json').url;

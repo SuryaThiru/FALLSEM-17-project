@@ -91,6 +91,10 @@ input[type="text"], input[type="password"], input[type="submit"] {
   float: right;
 }
 
+.tab-content {
+  padding-top: 20px;
+}
+
 
 /*styles for login*/
 .login-card {
@@ -131,8 +135,12 @@ input[type="text"], input[type="password"], input[type="submit"] {
   line-height: 2em;
   font-size: 1.2em;
 
+<<<<<<< HEAD
   /* border: solid 1px saddlebrown; */
   border: solid 2px #ffffff;
+=======
+  border: solid 1px #428bca;
+>>>>>>> origin/dev
   border-radius: 10px;
 }
 
@@ -140,7 +148,11 @@ input[type="text"], input[type="password"], input[type="submit"] {
   color: white;
   text-decoration: inherit;
 
+<<<<<<< HEAD
   background-color: #e73626;
+=======
+  background-color: #428bca;
+>>>>>>> origin/dev
   transition-duration: 0.3s;
 }
 
@@ -178,6 +190,7 @@ input[type="text"], input[type="password"], input[type="submit"] {
   margin: 15px;
 }
 
+<<<<<<< HEAD
 /* bg1 */
 body {
  
@@ -240,3 +253,58 @@ p {font-size: 16px;}
   font-size: 200%;
 }
 
+=======
+.clickable-row {
+  cursor: pointer;
+}
+
+
+/*styles for leadclassstudent page*/
+.details {
+  padding: 2% 0;
+}
+
+.details > p {
+  padding-bottom: 2%;
+  font-size: 1.5em;
+  padding-left: 3%;
+  padding-right: 5%;
+}
+
+
+/*styles for interactions page*/
+.chat-area {
+  margin: 5%;
+  padding: 1%;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #e0f3fa 0%,#d8f0fc 50%,#b8e2f6 51%,#b6dffd 100%);
+}
+
+.chat-row {
+  margin: 0.5% 0.5%;
+  padding: 1% 0.5%;
+  border-radius: 5px;
+}
+
+.chat-msg {
+  display: inline-block;
+  border-radius: 5px;
+  padding: 3%;
+}
+
+.sent {
+  background: linear-gradient(135deg, #f8ffe8 0%,#e3f5ab 33%,#b7df2d 100%);
+}
+
+.received {
+  background: linear-gradient(135deg, #fefcea 0%,#f1da36 100%);
+}
+
+.chat-input {
+  width:80%;
+}
+
+.chat-btn {
+  width: 20%;
+}
+>>>>>>> origin/dev
