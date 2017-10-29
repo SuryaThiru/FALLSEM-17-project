@@ -30,6 +30,10 @@ img{
   height: auto;
 }
 
+.dark_text{
+  color: #2f2f2f;
+}
+
 input[type="text"], input[type="password"], input[type="submit"] {
 
   border: none;
@@ -71,6 +75,10 @@ input[type="text"], input[type="password"], input[type="submit"] {
   color:#FFFFFF}
 
 /*general styles*/
+.bigger_text{
+  font-size: 200%;
+}
+
 .btn-outline-primary {
   border-color: #428bca;
   color: #428bca;
@@ -225,6 +233,7 @@ p {font-size: 16px;}
   color: #1abc9c !important;
 }
 
+
 .btn{
   background: #ffffff;
   border-radius: 0; 
@@ -240,9 +249,6 @@ p {font-size: 16px;}
   padding-top: 5%;
 }
 
-.bigger_text{
-  font-size: 200%;
-}
 
 .clickable-row {
   cursor: pointer;

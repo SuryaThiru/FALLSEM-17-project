@@ -8,10 +8,11 @@
 <body>
   <%- include('partials/header') %>
 
-  <div class="container bg-1">
+  <div class="container-fluid bg-1 ">
     <h2 class="text-center">Your Classroom</h2>
     <hr>
-
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
     <table class="table table-striped">
       <thead>
       <tr>
@@ -24,7 +25,7 @@
 
       <tbody>
       <% info.students.forEach((row, index) => {%>
-      <tr class="clickable-row" data-href="<%= row.register_id %>">
+      <tr class="clickable-row dark_text" data-href="<%= row.register_id %>">
         <td><%= index + 1 %></td>
         <td><%= row.register_id %></td>
         <td><%= row.f_name %></td>
@@ -34,6 +35,8 @@
       </tbody>
 
     </table>
+    </div>
+  </div>
   </div>
 
   <%- include("partials/scripts") %>
