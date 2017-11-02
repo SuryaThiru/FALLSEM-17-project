@@ -21,6 +21,16 @@ body {
   
 } */
 
+
+.top_margin{
+  margin-top: 10%;
+  
+}
+.no_top_margin{
+  padding-top: 5%;
+}
+
+
 a {
   color: #e74c3c;
 }
@@ -199,7 +209,12 @@ body {
   color: #f5f6f7;
 }
 p {font-size: 16px;}
-.margin {margin-bottom: 45px;}
+
+
+.margin {
+  margin-bottom: 45px;}
+
+
 .bg-1 { 
   background-color: #e74c3c; /* red */
   color: #ffffff;
@@ -241,14 +256,6 @@ p {font-size: 16px;}
   
 }
 
-.top_margin{
-  margin-top: 10%;
-  
-}
-.no_top_margin{
-  padding-top: 5%;
-}
-
 
 .clickable-row {
   cursor: pointer;
@@ -273,7 +280,8 @@ p {font-size: 16px;}
   margin: 5%;
   padding: 1%;
   border-radius: 5px;
-  background: linear-gradient(135deg, #e0f3fa 0%,#d8f0fc 50%,#b8e2f6 51%,#b6dffd 100%);
+  /* background: linear-gradient(135deg, #e0f3fa 0%,#d8f0fc 50%,#b8e2f6 51%,#b6dffd 100%); */
+  background: #2f2f2f;
 }
 
 .chat-row {
@@ -302,4 +310,12 @@ p {font-size: 16px;}
 
 .chat-btn {
   width: 20%;
+}
+
+/* styles for charts */
+
+.chart-display {
+  span { display: inline-block; width: 20px; height: 20px; }
+  display: none;
+  display: block;
 }

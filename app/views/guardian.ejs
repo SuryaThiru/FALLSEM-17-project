@@ -6,27 +6,43 @@
   <script src="/javascripts/Chart.min.js"></script>
 </head>
 <body>
-  <header class="container">
+        <!-- <%- include('partials/header_guardian') %> -->
+  <!-- <header class="container">
     <p class="text-right">
       <a class="btn btn-outline-primary btn-lg float-right" href="/logout">Log out</a>
     </p>
-  </header>
+  </header> -->
+  <nav class="navbar bg-4 ">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Apprise</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <!-- <li><a href="/dash">Dash</a></li> -->
+            <li><a href="/logout">Log out</a></li>
+            <li><a href="/interactions/guardian">Contact Teacher</a></li>
+            <li ><a href="javascript:history.go(-1)">Back</a></li>
+            
+          </ul>
+        </div>
+      </nav>
 
-  <div class="container">
+  <div class="container-fluid bg-1">
     <h2 class="text-center">Student report</h2>
     <hr>
-
-    <a href="/interactions/guardian" class="btn btn-primary btn-block">View teacher comments</a>
+<!-- 
+    <a href="/interactions/guardian" class="btn btn-primary btn-block">View teacher comments</a> -->
+    <div class="row"> 
 
     <%Object.keys(info.allStudentInfo).slice(0, -1).forEach(key => {%>
 
-    <div class="row">
-      <h4>Overall performance in <%= key %></h4>
+    
+      <h4>  Overall performance in <%= key %></h4>
 
-      <div class="col-md-4 col-md-offset-4 col-xs-12 col-sm-4 col-sm-offset-4">
-        <canvas id="<%= key %>" width="400" height="400"></canvas>
+      <div class="col-md-4 col-xs-12 col-sm-4 ">
+        <canvas id="<%= key %>" class="chart-display" width="400" height="400"><span></span></canvas>
       </div>
-    </div>
+    
 
     <script>
         let ctx_<%=key%> = document.getElementById('<%= key %>').getContext('2d');
@@ -42,10 +58,11 @@
             data: {
                 labels: labels_<%=key%>,
                 datasets: [{
-                    label: 'marks in <%=key%>',
+                    label: 'Marks in <%=key%>',
                     data: data_<%=key%>,
                     borderWidth: 1,
-                    backgroundColor: '#e486f5'
+                    backgroundColor: '#ffffff'
+                    
                 }]
             },
 
@@ -64,11 +81,13 @@
     </script>
 
     <%});%>
+</div>
 
     <div class="row">
-      <h4>Attendance</h4>
+      
 
-      <div class="col-md-4 col-md-offset-4 col-xs-12 col-sm-4 col-sm-offset-4">
+      <div class="col-md-4 col-xs-12 col-sm-4 col-sm-offset-4">
+            <h4>Attendance</h4>
         <canvas id="attendance" width="400" height="400"></canvas>
       </div>
     </div>
@@ -83,8 +102,9 @@
                 datasets: [{
                     data: [<%=info.attendance['attended']%>, <%=info.attendance['total'] -
                     info.attendance['attended']%>],
-                    backgroundColor: ['#ff6767', '#67ff88'],
-                    borderWidth: 1
+                    backgroundColor: ['#ffffff', '#2f2f2f'],
+                    borderWidth: 1,
+                    fontColor: '#ffffff'
                 }]
             },
             options: {
