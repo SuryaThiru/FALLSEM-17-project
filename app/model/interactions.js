@@ -6,7 +6,8 @@ const {Client} = require('pg');
 
 const host = require('./config.json').url;
 const client = new Client({
-    connectionString: host
+    connectionString: host,
+    ssl: true
 });
 client.connect();
 
