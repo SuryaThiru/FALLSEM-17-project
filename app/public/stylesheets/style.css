@@ -21,6 +21,9 @@ body {
   
 } */
 
+a:hover {
+  background-color: #1111111;
+}
 
 .top_margin{
   margin-top: 10%;
@@ -34,6 +37,7 @@ body {
 a {
   color: #e74c3c;
 }
+
 
 img{
   max-width: 100%;
