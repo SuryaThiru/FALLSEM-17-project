@@ -44,6 +44,8 @@
     <div class="tab-pane active in fade text-center" id="details">
       <h3 class="text-center text-uppercase">Student Information</h3>
 
+      <a href="/interactions/teacher/<%=info.personalInfo['Register ID']%>" class="btn btn-primary btn-block">View parent/guardian comments</a>
+
       <div class="details">
         <%for (key in info.personalInfo) {%>
         <p><span class="personal-info-title"><%= key %></span><span class="personal-info-seperator"> : </span><span
@@ -51,7 +53,6 @@
         <%}%>
       </div>
 
-      <a href="/interactions/teacher/<%=info.personalInfo['register_id']%>" class="btn btn-primary btn-block">View parent/guardian comments</a>
     </div>
 
     <!--performance-->
