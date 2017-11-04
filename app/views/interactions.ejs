@@ -38,7 +38,7 @@
       <%});%>
 
       <form action="/interactions" method="post" class="form-inline chat-send">
-        <div class="form-group"><input type="text" class="form-control" placeholder="Type your message here" name="message"></div>
+        <div class="form-group"><input type="text" class="form-control" placeholder="Type your message here" name="message" autocomplete="off"></div>
         <div class="form-group"><input type="number" name="reg_id" value="<%=data.regid%>" hidden></div>
 
         <% if (data.byTeacher) {%>

@@ -6,7 +6,8 @@ const {Client} = require('pg');
 
 const host = require('./config.json').url;
 const client = new Client({
-    connectionString: host
+    connectionString: host,
+    ssl: true
 });
 client.connect();
 
@@ -46,9 +47,20 @@ async function getStudentAttendance(regid) {
 
 async function getPersonalInfo(regid) {
     let cmd = 'select * from personal_info where register_id=($1)';
-    let {rows: result} =  await client.query(cmd, [regid]);
+    let {rows} =  await client.query(cmd, [regid]);
+    rows = rows[0];
 
-    return result[0];
+    result = {};
+    result['Register ID'] = rows['register_id'];
+    result['Gender'] = rows['gender'];
+    let d = rows['date_of_birth'];
+    result['DOB'] = `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`;
+    result['Address'] = rows['address'];
+    result['Email'] = rows['e_mail'];
+    result['Blood group'] = rows['blood_group'];
+    result['Contact'] = rows['contact'];
+
+    return result;
 }
 
 function getRequiredColumnFields() {
