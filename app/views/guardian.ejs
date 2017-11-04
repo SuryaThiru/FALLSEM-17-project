@@ -28,28 +28,23 @@
       </nav>
 
   <div class="container-fluid bg-1">
-    <h2 class="text-center">Student report</h2>
-    <hr>
+    <h2 class="text-center top_margin">Student report</h2>
     <div class="row">
-            <h2 class="text-center">Student Report of:</h2>
-            <h3 class="text-center"> 
-               <%= info.studInfo.info.l_name %>, <%= info.studInfo.info.f_name %>
-               -
-               <%= info.studInfo.info.register_id %>
-           </h3>
-           <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1"><hr></div>
-           </div>
+            <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1"><hr></div>
+    </div>
+   
 <!-- 
     <a href="/interactions/guardian" class="btn btn-primary btn-block">View teacher comments</a> -->
-    <div class="row"> 
+    
 
     <%Object.keys(info.allStudentInfo).slice(0, -1).forEach(key => {%>
 
     
-      <h4>  Overall performance in <%= key %></h4>
+      
 
-      <div class="col-md-4 col-xs-12 col-sm-4 ">
-        <canvas id="<%= key %>" class="chart-display" width="400" height="400"><span></span></canvas>
+      <div class="floating-box">
+            <h4>  Overall performance in <%= key %></h4>
+        <canvas id="<%= key %>" width="400" height="400"></canvas>
       </div>
     
 
@@ -90,12 +85,12 @@
     </script>
 
     <%});%>
-</div>
+
 
     <div class="row">
       
 
-      <div class="col-md-4 col-xs-12 col-sm-4 col-sm-offset-4">
+      <div class="floating-box">
             <h4>Attendance</h4>
         <canvas id="attendance" width="400" height="400"></canvas>
       </div>

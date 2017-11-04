@@ -16,7 +16,7 @@
         <ul class="nav navbar-nav">
           <li><a href="/dash">Dash</a></li>
           <li><a href="/logout">Log out</a></li>
-          <li><a href="/interactions/teacher/<%=info.personalInfo['register_id']%>">Contact Parent</a></li>
+          <li><a href="/interactions/teacher/<%=info.personalInfo['Register ID']%>">Contact Parent</a></li>
           <li ><a href="javascript:history.go(-1)">Back</a></li>
          
          
@@ -26,11 +26,15 @@
    
 
   <div class="container-fluid bg-1">
-    <h2 class="text-center">Student report</h2>
-    <hr>
+    <h2 class="text-center top_margin">Student report</h2>
+
+   <div class="row">
+      <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1"><hr></div>
+   </div>
+
 
     <!--navs for tab-->
-    <div id="tab-nav">
+    <div id="tab-nav top_margin">
       <ul class="nav nav-pills custom-nav">
         <li class="active"><a href="#details" data-toggle="tab">Personal info</a></li>
         <li><a href="#performance" data-toggle="tab">Performance</a></li>
@@ -43,28 +47,29 @@
     <!--personal info-->
     <div class="tab-pane active in fade text-center" id="details">
       <h3 class="text-center text-uppercase">Student Information</h3>
-
-      <a href="/interactions/teacher/<%=info.personalInfo['Register ID']%>" class="btn btn-primary btn-block">View parent/guardian comments</a>
+<!-- 
+      <a href="/interactions/teacher/<%=info.personalInfo['Register ID']%>" class="btn btn-primary btn-block">View parent/guardian comments</a> -->
 
       <div class="details">
-        <%for (key in info.personalInfo) {%>
-        <p><span class="personal-info-title"><%= key %></span><span class="personal-info-seperator"> : </span><span
-                  class="personal-info-value"><%= info.personalInfo[key] %></span></p>
-        <%}%>
+          <%for (key in info.personalInfo) {%>
+            <div class="float-box">
+                <!--TODO can't align it to centre-->
+                <h3><%= key %></h3>
+                <div class="well well-bg"> <%= info.personalInfo[key] %></div>
+              </div>
+              <%}%>
       </div>
 
     </div>
 
     <!--performance-->
-    <div class="tab-pane fade" id="performance">
+    <div class="tab-pane fade text-center" id="performance">
       <!--add charts to the document-->
       <%Object.keys(info.allStudentInfo).slice(0, -1).forEach(key => {%>
 
-      <div class="row">
-        <h4>Overall performance in <%= key %></h4>
-
-        <div class="col-md-4 col-xs-12 col-sm-4">
-          <canvas id="<%= key %>" class="chart-display" width="400" height="400"><span></span></canvas>
+        <div class="floating-box">
+            <h4>Overall performance in <%= key %></h4>
+          <canvas id="<%= key %>" width="400" height="400"></canvas>
         </div>
      
 
@@ -104,12 +109,13 @@
       </script>
 
       <%});%>
-    </div>
+   
 
-      <div class="row">
-        <h4>Attendance</h4>
+      <div class="row top_margin">
+        
 
-        <div class="col-md-4 col-md-offset-4 col-xs-12 col-sm-4 col-sm-offset-4">
+        <div class="floating-box">
+            <h4>Attendance</h4>
           <canvas id="attendance" width="400" height="400"></canvas>
         </div>
       </div>

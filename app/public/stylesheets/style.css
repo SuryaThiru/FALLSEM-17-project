@@ -21,12 +21,16 @@ body {
   
 } */
 
+.bigger_text{
+  font-size: 200%;
+}
+
 a:hover {
   background-color: #1111111;
 }
 
 .top_margin{
-  margin-top: 10%;
+  margin-top: 5%;
   
 }
 .no_top_margin{
@@ -51,7 +55,7 @@ img{
 input[type="text"], input[type="password"], input[type="submit"] {
 
   border: none;
-  background: #474e5d;
+  background:  #2f2f2f;
   color: #FFFFFF;
 }
 
@@ -89,15 +93,16 @@ input[type="text"], input[type="password"], input[type="submit"] {
   color:#FFFFFF}
 
 /*general styles*/
-.bigger_text{
-  font-size: 200%;
-}
+
 
 .btn-outline-primary {
   border-color: #428bca;
   color: #428bca;
-
   transition: all .5s;
+}
+
+input[type="text"]:active{
+  background:  #2f2f2f;
 }
 
 .btn-outline-primary:hover {
@@ -117,7 +122,10 @@ input[type="text"], input[type="password"], input[type="submit"] {
   padding-top: 20px;
 }
 
-
+.well-bg{
+  background: #e02c1b;
+  border: none;
+}
 /*styles for login*/
 .login-card {
   background-color: #e74c3c;
@@ -166,7 +174,7 @@ input[type="text"], input[type="password"], input[type="submit"] {
   color: white;
   text-decoration: inherit;
 
-  background-color: #e73626;
+  background-color: #2f2f2f;
   transition-duration: 0.3s;
 }
 
@@ -180,15 +188,27 @@ input[type="text"], input[type="password"], input[type="submit"] {
 .custom-nav {
   display: flex;
   justify-content: center;
+  
 }
+
+
 
 .custom-nav > li > a {
   padding: 6px;
   border-radius: 0;
   width: 7em;
   text-align: center;
+  background: #2f2f2f;
+  color: #ffffff;
+  
 }
 
+.nav-pills > .active > a{
+  background: #ffffff;
+}
+.nav-pills > .active > a:hover {
+  background-color: #e74c3c;
+}
 .custom-nav > li:first-child > a {
   border-top-left-radius: 25px;
   border-bottom-left-radius: 25px;
@@ -208,10 +228,11 @@ input[type="text"], input[type="password"], input[type="submit"] {
 body {
  
   font-family: 'Anton', sans-serif;
-  
+  background: #e74c3c;
   line-height: 1.8;
   color: #f5f6f7;
 }
+
 p {font-size: 16px;}
 
 
@@ -249,7 +270,7 @@ p {font-size: 16px;}
   letter-spacing: 5px;
 }
 .navbar-nav  li a:hover {
-  color: #1abc9c !important;
+  color: #000000;
 }
 
 
@@ -267,6 +288,14 @@ p {font-size: 16px;}
 
 
 /*styles for leadclassstudent page*/
+.float-box {
+  display: inline-block;
+  width: 350px;
+  height: 80px;
+  margin: 20px;
+  
+}
+
 .details {
   padding: 2% 0;
 }
@@ -301,11 +330,13 @@ p {font-size: 16px;}
 }
 
 .sent {
-  background: linear-gradient(135deg, #f8ffe8 0%,#e3f5ab 33%,#b7df2d 100%);
+  background: #ffffff;
+  color: #e74c3c;
 }
 
 .received {
-  background: linear-gradient(135deg, #fefcea 0%,#f1da36 100%);
+  background: #f0f0f0;
+  color: #e74c3c;
 }
 
 .chat-input {
@@ -323,3 +354,23 @@ p {font-size: 16px;}
   display: none;
   display: block;
 }
+
+.chart_disp{
+  display: inline-block;
+  background: #474e5d;
+}
+.canvas-container {
+  min-height: 300px;
+  max-height: 600px;
+  position: relative;
+}
+
+.floating-box {
+  display: inline-block;
+  width: 400px;
+  height: 400px;
+  margin: 20px;
+  
+}
+
+
