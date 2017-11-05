@@ -20,13 +20,15 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   
 } */
-
+.hide{
+  visibility:hidden;
+}
 .bigger_text{
   font-size: 200%;
 }
 
 a:hover {
-  background-color: #1111111;
+  background-color: #ffffff;
 }
 
 .top_margin{
@@ -79,7 +81,7 @@ input[type="text"], input[type="password"], input[type="submit"] {
   -moz-appearance:none;
   appearance:none;
   cursor:pointer; 
-  background:#474e5d url(https://cdn1.iconfinder.com/data/icons/universal-icons-set-for-web-and-mobile/100/controls_0-12-512.png) no-repeat right center; /*we gotta replace this img*/
+  background: #2f2f2f url(https://cdn1.iconfinder.com/data/icons/universal-icons-set-for-web-and-mobile/100/controls_0-12-512.png) no-repeat right center; /*we gotta replace this img*/
   background-size: 40px 37px; 
 }
 
@@ -102,7 +104,7 @@ input[type="text"], input[type="password"], input[type="submit"] {
 }
 
 input[type="text"]:active{
-  background:  #2f2f2f;
+  background: #ffffff;
 }
 
 .btn-outline-primary:hover {
