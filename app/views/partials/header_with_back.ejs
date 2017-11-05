@@ -1,14 +1,20 @@
-<nav class="navbar bg-4 ">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="#">Apprise</a>
-          </div>
-          <ul class="nav navbar-nav">
-            <li><a href="/dash">Dash</a></li>
-            <li><a href="/logout">Log out</a></li>
-            <li ><a href="javascript:history.go(-1)">Back</a></li>
-           
-          </ul>
+
+      <div class="navbar topnav" id="myTopnav">
+          <a href="">APPRISE</a>
+          <a href="/dash">Dash</a>
+          <a href="/logout">Log out</a>
+          <a href="javascript:history.go(-1)">Back</a>
+          <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
         </div>
-      </nav>
-     
+       
+        
+        <script>
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+        </script>

@@ -6,47 +6,23 @@
   <script src="/javascripts/Chart.min.js"></script>
 </head>
 <body>
-        
-  <!-- <header class="container">
-    <p class="text-right">
-      <a class="btn btn-outline-primary btn-lg float-right" href="/logout">Log out</a>
-    </p>
-  </header> -->
-  <nav class="navbar bg-4 ">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="#">Apprise</a>
-          </div>
-          <ul class="nav navbar-nav">
-            <!-- <li><a href="/dash">Dash</a></li> -->
-            <li><a href="/logout">Log out</a></li>
-            <li><a href="/interactions/guardian">Contact Teacher</a></li>
-            <!-- <li ><a href="javascript:history.go(-1)">Back</a></li> -->
-            
-          </ul>
-        </div>
-      </nav>
+        <%- include('partials/header_guardian_interactions') %>
+ 
 
   <div class="container-fluid text-center bg-1">
     <h2 class="text-center top_margin animated zoomIn">Student report </h2>
     <div class="row">
-            <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1"><hr></div>
+        <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1"><hr></div>
     </div>
-   
-<!-- 
-    <a href="/interactions/guardian" class="btn btn-primary btn-block">View teacher comments</a> -->
-    
+
 
     <%Object.keys(info.allStudentInfo).slice(0, -1).forEach(key => {%>
 
-    
-      
 
       <div class="floating-box">
             <h4>  Overall performance in <%= key %></h4>
         <canvas id="<%= key %>" width="400" height="400"></canvas>
       </div>
-    
 
     <script>
         let ctx_<%=key%> = document.getElementById('<%= key %>').getContext('2d');
