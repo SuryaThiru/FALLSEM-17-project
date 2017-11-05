@@ -21,14 +21,14 @@
             <!-- <li><a href="/dash">Dash</a></li> -->
             <li><a href="/logout">Log out</a></li>
             <li><a href="/interactions/guardian">Contact Teacher</a></li>
-            <li ><a href="javascript:history.go(-1)">Back</a></li>
+            <!-- <li ><a href="javascript:history.go(-1)">Back</a></li> -->
             
           </ul>
         </div>
       </nav>
 
-  <div class="container-fluid bg-1">
-    <h2 class="text-center top_margin animated zoomIn">Student report</h2>
+  <div class="container-fluid text-center bg-1">
+    <h2 class="text-center top_margin animated zoomIn">Student report </h2>
     <div class="row">
             <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1"><hr></div>
     </div>
@@ -65,18 +65,32 @@
                     label: 'Marks in <%=key%>',
                     data: data_<%=key%>,
                     borderWidth: 1,
-                    backgroundColor: '#ffffff'
+                    backgroundColor: '#f0f0f0'
                     
                 }]
             },
 
             options: {
+                legend: {
+                    labels: {
+                        fontColor: "white",
+                        fontSize: 18
+                        
+                    }
+                },
                 scales: {
                     yAxes: [{
                         ticks: {
-                            beginAtZero:true
+                            beginAtZero:true,
+                            fontColor: "#f0f0f0"
                         }
-                    }]
+                    }],
+                        xAxes: [{
+                            ticks: {
+                                fontColor: "#f0f0f0"
+                                
+                            }
+                        }]
                 },
                 responsive: false,
                 maintainAspectRatio: true
@@ -106,9 +120,9 @@
                 datasets: [{
                     data: [<%=info.attendance['attended']%>, <%=info.attendance['total'] -
                     info.attendance['attended']%>],
-                    backgroundColor: ['#ffffff', '#2f2f2f'],
+                    backgroundColor: ['#f0f0f0', '#2f2f2f'],
                     borderWidth: 1,
-                    fontColor: '#ffffff'
+                    fontColor: '#f0f0f0'
                 }]
             },
             options: {

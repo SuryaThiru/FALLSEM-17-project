@@ -8,7 +8,7 @@
   color: #F0A830; */
   color: #e74c3c;
   color: #474e5d;
-  color: #ffffff;
+  color: #f0f0f0;
   color: #2f2f2f;
 }
 
@@ -20,6 +20,15 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   
 } */
+
+.full{
+  height: 100vh;
+}
+
+.half{
+  height: 50vh;
+}
+
 .hide{
   visibility:hidden;
 }
@@ -28,7 +37,7 @@ body {
 }
 
 a:hover {
-  background-color: #ffffff;
+  background-color: #f0f0f0;
 }
 
 .top_margin{
@@ -58,7 +67,7 @@ input[type="text"], input[type="password"], input[type="submit"] {
 
   border: none;
   background:  #2f2f2f;
-  color: #FFFFFF;
+  color: #f0f0f0;
 }
 
 /* input:focus{
@@ -73,7 +82,7 @@ input[type="text"], input[type="password"], input[type="submit"] {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
-  color:#FFFFFF;
+  color:#f0f0f0;
   border:none;
   outline:none;
   display: inline-block;
@@ -86,13 +95,13 @@ input[type="text"], input[type="password"], input[type="submit"] {
 }
 
 .form-control::-moz-placeholder{
-  color:#FFFFFF;opacity:1}
+  color:#f0f0f0;opacity:1}
 
 .form-control:-ms-input-placeholder{
-  color:#FFFFFF}
+  color:#f0f0f0}
 
 .form-control::-webkit-input-placeholder{
-  color:#FFFFFF}
+  color:#f0f0f0}
 
 /*general styles*/
 
@@ -104,7 +113,7 @@ input[type="text"], input[type="password"], input[type="submit"] {
 }
 
 input[type="text"]:active{
-  background: #ffffff;
+  background:  #2f2f2f;
 }
 
 .btn-outline-primary:hover {
@@ -125,8 +134,10 @@ input[type="text"]:active{
 }
 
 .well-bg{
-  background: #e02c1b;
+  background: #2f2f2f;
   border: none;
+  
+  font-size: 120%;
 }
 /*styles for login*/
 .login-card {
@@ -147,6 +158,8 @@ input[type="text"]:active{
   padding: 2%;
   border-radius: 10px;
   margin-bottom: 2%;
+  background: #e74c3c;
+  color: #f0f0f0;
 }
 
 .btn-space {
@@ -168,7 +181,7 @@ input[type="text"]:active{
   font-size: 1.2em;
   
   /* border: solid 1px saddlebrown; */
-  border: solid 2px #ffffff;
+  border: solid 2px #f0f0f0;
   border-radius: 10px;
 }
 
@@ -193,7 +206,14 @@ input[type="text"]:active{
   
 }
 
+.custom-nav > li > a.active{
+  background: red;
+}
 
+.custom-nav .active a,
+.custom-nav .active a:hover {
+    background-color: red;
+}
 
 .custom-nav > li > a {
   padding: 6px;
@@ -201,14 +221,14 @@ input[type="text"]:active{
   width: 7em;
   text-align: center;
   background: #2f2f2f;
-  color: #ffffff;
+  color: #f0f0f0;
   
 }
 
 .nav-pills > .active > a{
-  background: #ffffff;
+  background: #f0f0f0;
 }
-.nav-pills > .active > a:hover {
+.nav-pills > .active > a {
   background-color: #e74c3c;
 }
 .custom-nav > li:first-child > a {
@@ -230,7 +250,7 @@ input[type="text"]:active{
 body {
  
   font-family: 'Anton', sans-serif;
-  background: #e74c3c;
+  
   line-height: 1.8;
   color: #f5f6f7;
 }
@@ -244,19 +264,19 @@ p {font-size: 16px;}
 
 .bg-1 { 
   background-color: #e74c3c; /* red */
-  color: #ffffff;
+  color: #f0f0f0;
 }
 .bg-2 { 
   background-color: #474e5d; /* Dark Blue */
-  color: #ffffff;
+  color: #f0f0f0;
 }
 .bg-3 { 
-  background-color: #ffffff; /* White */
+  background-color: #f0f0f0; /* White */
   color: #555555;
 }
 .bg-4 { 
   background-color: #2f2f2f; /* Black Gray */
-  color: #ffffff;
+  color: #f0f0f0;
 }
 .container-fluida {
   padding-top: 10%;
@@ -275,26 +295,37 @@ p {font-size: 16px;}
   color: #000000;
 }
 
+white_bg{
+  background: white;
+}
 
 .btn{
-  background: #ffffff;
-  border-radius: 0; 
-  width: 25%;
+  background: white;
   
+  border-radius: 0; 
+  
+ 
+  
+}
+.btn:hover{
+  color: #e74c3c;
 }
 
 
 .clickable-row {
   cursor: pointer;
+  
 }
-
+white_text{
+  color: white;
+}
 
 /*styles for leadclassstudent page*/
 .float-box {
   display: inline-block;
   width: 350px;
   height: 80px;
-  margin: 20px;
+  margin: 40px;
   
 }
 
@@ -323,22 +354,33 @@ p {font-size: 16px;}
   margin: 0.5% 0.5%;
   padding: 1% 0.5%;
   border-radius: 5px;
+  
 }
 
 .chat-msg {
   display: inline-block;
   border-radius: 5px;
   padding: 3%;
+  
 }
 
 .sent {
-  background: #ffffff;
+  background: #f0f0f0;
   color: #e74c3c;
+  text-align: right;
+  
+  font-size: 120%;
+  
+  
 }
+
+
 
 .received {
   background: #f0f0f0;
   color: #e74c3c;
+  font-size: 120%;
+ 
 }
 
 .chat-input {
@@ -361,17 +403,13 @@ p {font-size: 16px;}
   display: inline-block;
   background: #474e5d;
 }
-.canvas-container {
-  min-height: 300px;
-  max-height: 600px;
-  position: relative;
-}
+
 
 .floating-box {
   display: inline-block;
-  width: 400px;
-  height: 400px;
-  margin: 20px;
+  width: auto;
+  height: 100%;
+  margin: 5%;
   
 }
 

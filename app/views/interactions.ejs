@@ -6,14 +6,14 @@
 </head>
 <body>
 
-    <%- include('partials/header_with_back') %>
+    <%- include('partials/header_guardian_interactions') %>
   <!-- <header class="container-fluid bg-1">
     <p class="text-right">
       <a class="btn btn-outline-primary btn-lg float-right" href="/logout">Log out</a>
     </p>
   </header> -->
 
-  <div class="container-fluid bg-1">
+  <div class="container-fluid full bg-1">
     <h2 class="text-center top_margin animated zoomIn">Conversations</h2>
     <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1"><hr></div>
     
@@ -30,13 +30,16 @@
 
       <%data.messages.forEach(key => {%>
         <%if ((key.post_by_teacher && data.byTeacher) || (!key.post_by_teacher && !data.byTeacher)) {%>
-        <div class="chat-row">
-          <div class="chat-msg sent"><%= key.post %></div>
+        <div class="row chat-row">
+          <div class="col-md-2"></div>
+          <div class="col-md-10 well-sm sent"><%= key.post %></div>
         </div>
         <%} else {%>
-        <div class="chat-row">
-          <div class="chat-msg received"><%= key.post %></div>
-        </div>
+          <div class="row chat-row">
+              
+              <div class="col-md-10 well-sm received"><%= key.post %></div>
+              <div class="col-md-2"></div>
+            </div>
         <%}%>
       <%});%>
 

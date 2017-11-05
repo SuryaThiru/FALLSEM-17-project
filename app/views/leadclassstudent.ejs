@@ -36,7 +36,7 @@
     <!--navs for tab-->
     <div id="tab-nav top_margin">
       <ul class="nav nav-pills custom-nav">
-        <li class="active"><a href="#details" data-toggle="tab">Personal info</a></li>
+        <li ><a href="#details" data-toggle="tab">Personal info</a></li>
         <li><a href="#performance" data-toggle="tab">Performance</a></li>
       </ul>
     </div>
@@ -52,10 +52,16 @@
 
       <div class="details">
           <%for (key in info.personalInfo) {%>
-            <div class="float-box">
+            <div class="row">
                 <!--TODO can't align it to centre-->
-                <h3><%= key %></h3>
-                <div class="well well-bg animated zoomIn"> <%= info.personalInfo[key] %></div>
+                <div class="col-md-4 col-sm-2">
+                    <h3><%= key %> -</h3>
+                </div>
+                <div class="col-md-8 col-sm-12">
+                    <div class="well well-bg animated zoomIn"> <%= info.personalInfo[key] %></div>
+                </div>
+                
+
               </div>
               <%}%>
       </div>
@@ -95,12 +101,27 @@
               },
 
               options: {
+                  legend: {
+                    labels: {
+                        fontColor: "white",
+                        fontSize: 18
+                        
+                    }
+                },
                   scales: {
                       yAxes: [{
                           ticks: {
-                              beginAtZero:true
+                              beginAtZero:true,
+                              fontColor: "#ffffff"
                           }
-                      }]
+                      }],
+
+                      xAxes: [{
+                            ticks: {
+                                fontColor: "#ffffff"
+                                
+                            }
+                        }]
                   },
                   responsive: false,
                   maintainAspectRatio: true

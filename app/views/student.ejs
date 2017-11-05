@@ -57,17 +57,31 @@
                       label: 'marks in <%=key%>',
                       data: data_<%=key%>,
                       borderWidth: 1,
-                      backgroundColor: ['#2f2f2f', '#ffffff', '#2f2f2f']
+                      backgroundColor: ['#2f2f2f', '#f0f0f0', '#2f2f2f']
                   }]
               },
 
               options: {
+                legend: {
+                    labels: {
+                        fontColor: "white",
+                        fontSize: 18
+                        
+                    }
+                },
                   scales: {
                       yAxes: [{
                           ticks: {
-                              beginAtZero:true
+                              beginAtZero:true,
+                              fontColor: "#f0f0f0"
                           }
-                      }]
+                      }],
+                      xAxes: [{
+                            ticks: {
+                                fontColor: "#f0f0f0"
+                                
+                            }
+                        }]
                   },
                   responsive: false,
                   maintainAspectRatio: true,
