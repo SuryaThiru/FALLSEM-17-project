@@ -25,4 +25,19 @@ $( function () {
             let url = window.location + '/' + $(this).attr('data-href');
             window.open(url, '_self');
         });
+
+
+        // animations
+        $('.bg-2 > *').css('visibility', 'hidden');
+        $(window).scroll(function (event) {
+            let scroll = $(window).scrollTop();
+
+            // index 2nd row
+            let row2 = $('.bg-2').offset().top;
+            if (scroll >= row2 + 5) {
+                $('.bg-2 > *').css('visibility', 'visible');
+                $('.bg-2 > h1').addClass('animated fadeInDown');
+            }
+
+        })
 });
