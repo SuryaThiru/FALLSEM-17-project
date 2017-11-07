@@ -1,5 +1,5 @@
 # FALLSEM-17-project
-school monitoring system
+students performance monitoring system
 
 ## steps to run app locally
 1. Install latest stable nodejs version in your machine
