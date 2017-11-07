@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>lead class</title>
+  <%- include('partials/head') %>
+
+  <script src="/javascripts/Chart.min.js"></script>
+</head>
+<body>
+    <%- include('partials/header_with_back') %>
+
+  <div class="container-fluid full bg-1 ">
+    <h1 class="text-center top_margin animated zoomIn">Your Classroom</h1>
+
+<div class="col-md-10 col-md-offset-1 col-sm-8 col-sm-offset-1"><hr></div>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+    <table class="table table-striped ">
+      <thead>
+      <tr>
+        <th>No</th>
+        <th>Reg id</th>
+        <th>First name</th>
+        <th>Last name</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% info.students.forEach((row, index) => {%>
+      <tr class="clickable-row dark_text" data-href="<%= row.register_id %>">
+        <td><%= index + 1 %></td>
+        <td><%= row.register_id %></td>
+        <td><%= row.f_name %></td>
+        <td><%= row.l_name %></td>
+      </tr>
+      <% }); %>
+      </tbody>
+
+    </table>
+    </div>
+  </div>
+  </div>
+
+  <%- include("partials/scripts") %>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>classroom</title>
+    <%- include('partials/head') %>
+    <script src="/javascripts/Chart.min.js"></script>
+  </head>
+  <body>
+   
+  <%- include('partials/header_with_back') %>
+    <div class="container-fluid bg-1">
+      <h2 class="text-center animated zoomIn">Classroom</h2>
+      <div class="row">
+      <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1"><hr></div>
+      </div>
+
+      <!--navs for tab-->
+      <div id="tab-nav">
+        <ul class="nav nav-pills custom-nav">
+          <li class="active"><a href="#overall" data-toggle="tab">Overall</a></li>
+          <li><a href="#individual" data-toggle="tab">Individual</a></li>
+        </ul>
+      </div>
+
+      <!--content for tabs-->
+      <div class="tab-content">
+        <!--overall charts-->
+        <div class="tab-pane active in fade text-center" id="overall">
+
+          <!--add charts to the document-->
+          <%Object.keys(info.marksList[0]).forEach(key => {%>
+            <% if (['class_number', 'f_name', 'l_name', 'register_id', 'emp_id'].indexOf(key) != -1) return;%>
+
+
+          <!-- <div class="row float-left chart_disp"> -->
+            <div class="floating-box">
+                <h4 >Overall performance in <%= key %></h4>
+              <!--TODO can't align it to centre-->
+              <canvas id="<%= key %>" width="400" height="400"></canvas>
+            </div>
+          <!-- </div> -->
+
+          <script>
+            let ctx_<%=key%> = document.getElementById('<%= key %>').getContext('2d');
+            let data_<%=key%> = [];
+            let labels_<%=key%> = [];
+            <% info.marksList.forEach(row => {%>
+              data_<%=key%>.push(<%=row[key]%>);
+              labels_<%=key%>.push(<%=row['register_id']%>);
+            <%})%>
+            console.log(data_<%=key%>, labels_<%=key%>)
+
+
+            let graph_<%=key%> = new Chart(ctx_<%=key%>, {
+                type: 'bar',
+                data: {
+                    labels: labels_<%=key%>,
+                    datasets: [{
+                        label: 'marks in <%=key%>',
+                        data: data_<%=key%>,
+                        borderWidth: 2,
+                        backgroundColor: '#f0f0f0',
+                        fontColor: '#f0f0f0',
+                        
+                    }]
+                },
+
+                options: {
+                  legend: {
+                    labels: {
+                        fontColor: "white",
+                        fontSize: 18
+                        
+                    }
+                },
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true,
+                                fontColor: "#f0f0f0"
+                                
+                            }
+                        }],
+                        xAxes: [{
+                            ticks: {
+                                fontColor: "#f0f0f0"
+                                
+                            }
+                        }]
+
+                    },
+                    responsive: false,
+                    maintainAspectRatio: true
+                }
+            });
+          </script>
+          <%});%>
+        </div>
+
+
+        <!--individual table-->
+        <div class="tab-pane fade" id="individual">
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+          <table class="table table-striped ">
+            <thead>
+            <tr>
+              <th>No</th>
+              <th>Reg id</th>
+              <th>First name</th>
+              <th>Last name</th>
+            </tr>
+            </thead>
+
+            <tbody>
+              <% info.infoList.forEach((row, index) => {%>
+              <tr class="clickable-row dark_text" data-href="<%= row.register_id %>">
+                <td><%= index + 1 %></td>
+                <td><%= row.register_id %></td>
+                <td><%= row.f_name %></td>
+                <td><%= row.l_name %></td>
+              </tr>
+              <% }); %>
+            </tbody>
+
+          </table>
+              <div>
+                <div>
+        </div>
+      </div>
+
+      <%- include("partials/scripts") %>
+    </div>
+  </body>
+</html>

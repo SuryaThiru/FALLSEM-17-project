@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>student report</title>
+   <%- include('partials/head') %>
+  <script src="/javascripts/Chart.min.js"></script>
+</head>
+<body>
+  <%- include('partials/header_with_back') %>
+
+  <div class="container-fluid text-center bg-1">
+      <div class="row">
+     <h2 class="text-center animated zoomIn">Student Report of:</h2>
+     <h3 class="text-center animated zoomIn">
+        <%= info.studInfo.info.l_name %>, <%= info.studInfo.info.f_name %>
+        -
+        <%= info.studInfo.info.register_id %>
+    </h3>
+    <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1"><hr></div>
+    </div>
+
+    <!-- <div class="row">
+      <h3 class="text-center"><%= info.studInfo.info.register_id %> <span
+                ><%= info.studInfo.info.l_name %>, <%= info.studInfo.info.f_name %></span></h3>
+    </div> -->
+    
+
+    
+      <!--add charts to the document-->  
+     
+      <%Object.keys(info.studInfo.marks).forEach(key => {%>
+       
+      
+    
+        <div class="floating-box">
+          <!--TODO can't align it to centre-->
+          <h4>Performance in <%= key %></h4>
+          <canvas id="<%= key %>" class="chart-display" width="400" height="400"><span></span></canvas>
+        </div>
+
+
+      <script>
+          let ctx_<%=key%> = document.getElementById('<%= key %>').getContext('2d');
+          let data_<%=key%> = [];
+          let labels_<%=key%> = ['max class mark', 'scored mark', 'average class mark'];
+
+          data_<%=key%>.push(<%=info.classStat['max_' + key]%>);
+          data_<%=key%>.push(<%=info.studInfo.marks[key]%>);
+          data_<%=key%>.push(<%=info.classStat['avg_' + key]%>);
+
+
+          let graph_<%=key%> = new Chart(ctx_<%=key%>, {
+              type: 'bar',
+              data: {
+                  labels: labels_<%=key%>,
+                  datasets: [{
+                      label: 'marks in <%=key%>',
+                      data: data_<%=key%>,
+                      borderWidth: 1,
+                      backgroundColor: ['#2f2f2f', '#f0f0f0', '#2f2f2f']
+                  }]
+              },
+
+              options: {
+                legend: {
+                    labels: {
+                        fontColor: "white",
+                        fontSize: 18
+                        
+                    }
+                },
+                  scales: {
+                      yAxes: [{
+                          ticks: {
+                              beginAtZero:true,
+                              fontColor: "#f0f0f0"
+                          }
+                      }],
+                      xAxes: [{
+                            ticks: {
+                                fontColor: "#f0f0f0"
+                                
+                            }
+                        }]
+                  },
+                  responsive: false,
+                  maintainAspectRatio: true,
+                  legend: {
+                      display: false
+                  }
+              }
+          });
+      </script>
+        <%});%>
+    
+
+    </div>
+
+
+  <%- include("partials/scripts") %>
+</body>
+</html>

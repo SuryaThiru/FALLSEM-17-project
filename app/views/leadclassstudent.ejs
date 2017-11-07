@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>lead class student</title>
+  <%- include('partials/head') %>
+  <script src="/javascripts/Chart.min.js"></script>
+</head>
+<body>
+        <%- include('partials/header_dash_back') %>
+
+
+  <div class="container-fluid bg-1">
+    <h2 class="text-center top_margin animated zoomIn">Student report</h2>
+
+   <div class="row">
+      <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1"><hr></div>
+   </div>
+
+
+    <!--navs for tab-->
+    <div id="tab-nav top_margin">
+      <ul class="nav nav-pills custom-nav">
+        <li ><a href="#details" data-toggle="tab">Personal info</a></li>
+        <li><a href="#performance" data-toggle="tab">Performance</a></li>
+      </ul>
+    </div>
+  <br>
+
+  <!--content for tabs-->
+  <div class="tab-content bg-1">
+    <!--personal info-->
+    <div class="tab-pane active in fade text-center" id="details">
+      <h3 class="text-center text-uppercase">Student Information</h3>
+<!-- 
+      <a href="/interactions/teacher/<%=info.personalInfo['Register ID']%>" class="btn btn-primary btn-block">View parent/guardian comments</a> -->
+
+      <div class="details">
+          <%for (key in info.personalInfo) {%>
+            <div class="row">
+                <!--TODO can't align it to centre-->
+                <div class="col-md-4 col-sm-2">
+                    <h3><%= key %> -</h3>
+                </div>
+                <div class="col-md-8 col-sm-12">
+                    <div class="well well-bg animated zoomIn"> <%= info.personalInfo[key] %></div>
+                </div>
+                
+
+              </div>
+              <%}%>
+      </div>
+
+    </div>
+
+    <!--performance-->
+    <div class="tab-pane fade text-center" id="performance">
+      <!--add charts to the document-->
+      <%Object.keys(info.allStudentInfo).slice(0, -1).forEach(key => {%>
+
+        <div class="floating-box animated slideInUp">
+            <h4>Overall performance in <%= key %></h4>
+          <canvas id="<%= key %>" width="400" height="400"></canvas>
+        </div>
+     
+
+      <script>
+          let ctx_<%=key%> = document.getElementById('<%= key %>').getContext('2d');
+          let data_<%=key%> = [];
+          let labels_<%=key%> = [];
+          <% info.allStudentInfo[key].forEach((val, ind) => {%>
+          data_<%=key%>.push(<%=val%>);
+          labels_<%=key%>.push(<%=info.allStudentInfo['emp_id'][ind]%>);
+          <%})%>
+
+          let graph_<%=key%> = new Chart(ctx_<%=key%>, {
+              type: 'bar',
+              data: {
+                  labels: labels_<%=key%>,
+                  datasets: [{
+                      label: 'marks in <%=key%>',
+                      data: data_<%=key%>,
+                      borderWidth: 1,
+                      backgroundColor: '#ffffff'
+                  }]
+              },
+
+              options: {
+                  legend: {
+                    labels: {
+                        fontColor: "white",
+                        fontSize: 18
+                        
+                    }
+                },
+                  scales: {
+                      yAxes: [{
+                          ticks: {
+                              beginAtZero:true,
+                              fontColor: "#ffffff"
+                          }
+                      }],
+
+                      xAxes: [{
+                            ticks: {
+                                fontColor: "#ffffff"
+                                
+                            }
+                        }]
+                  },
+                  responsive: false,
+                  maintainAspectRatio: true
+              }
+          });
+      </script>
+
+      <%});%>
+   
+
+      <div class="row ">
+        
+
+        <div class="floating-box">
+            <h4>Attendance</h4>
+          <canvas id="attendance" width="400" height="400"></canvas>
+        </div>
+      </div>
+
+      <script>
+          var ctx_attendance = document.getElementById('attendance').getContext('2d');
+
+          var pie_attendance = new Chart(ctx_attendance, {
+              type: 'pie',
+              data: {
+                  labels: ['attended classes', 'missed classes'],
+                  datasets: [{
+                      data: [<%=info.attendance['attended']%>, <%=info.attendance['total'] -
+                            info.attendance['attended']%>],
+                      backgroundColor: ['#ffffff', '#2f2f2f'],
+                      borderWidth: 1
+                  }]
+              },
+              options: {
+                  responsive: false,
+                  maintainAspectRatio: true
+              }
+          })
+      </script>
+    </div>
+  </div>
+</div>
+
+  <%- include("partials/scripts") %>
+</body>
+</html>

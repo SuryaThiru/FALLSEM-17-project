@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Dashboard</title>
+    <%- include('partials/head') %>
+  </head>
+  <body>
+  <%- include('partials/header') %>
+  <div class="container-fluid bg-1 dbl no_top_margin">
+    <h1 class="text-center animated zoomIn">Welcome to your Dashboard, <%= info.teacherInfo.f_name %> <%= info.teacherInfo.l_name %> ! </h1>
+    <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1"><hr></div>
+   
+
+   
+<div class="row">
+    <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 ">
+        <h2 class="text-center animated slideInDown">Your class</h2>
+    </div>
+</div>
+
+    <div class="row">
+      <div class="col-md-4  col-xs-2"></div>
+      <div class="col-md-4  col-xs-8">
+        <a href="/leadclass" class="class-card animated slideInDown">
+          
+           Class number <%= info.classDetails.leadingClass.class_number %>, with <%= info.classDetails.leadingClass.class_strength %> students.
+          
+        </a>
+      </div>
+    </div>
+
+  
+<div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1"><hr></div>
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 ">
+        <h3 class="text-center animated slideInUp">Other classes you handle</h3>
+    </div>
+</div>
+
+    <div class="row">
+      <% info.classDetails.classList.forEach((cls) => { %>
+      <div class="col-md-2 col-xs-6">
+        <a href="class/<%= cls.class_number %>" class="class-card animated slideInUp">
+          <ul class="list-unstyled">
+            <li>Class number <%= cls.class_number %>, with <%= cls.class_strength %> students. </li>
+           
+          </ul>
+        </a>
+      </div>
+      <% }); %>
+    </div>
+
+  </div>
+  </body>
+</html>

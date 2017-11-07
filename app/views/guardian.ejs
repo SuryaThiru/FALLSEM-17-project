@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Student report</title>
+  <%- include('partials/head') %>
+  <script src="/javascripts/Chart.min.js"></script>
+</head>
+<body>
+        <%- include('partials/header_guardian_interactions') %>
+ 
+
+  <div class="container-fluid text-center bg-1">
+    <h2 class="text-center top_margin animated zoomIn">Student report </h2>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1"><hr></div>
+    </div>
+
+
+    <%Object.keys(info.allStudentInfo).slice(0, -1).forEach(key => {%>
+
+
+      <div class="floating-box">
+            <h4>  Overall performance in <%= key %></h4>
+        <canvas id="<%= key %>" width="400" height="400"></canvas>
+      </div>
+
+    <script>
+        let ctx_<%=key%> = document.getElementById('<%= key %>').getContext('2d');
+        let data_<%=key%> = [];
+        let labels_<%=key%> = [];
+        <% info.allStudentInfo[key].forEach((val, ind) => {%>
+        data_<%=key%>.push(<%=val%>);
+        labels_<%=key%>.push(<%=info.allStudentInfo['emp_id'][ind]%>);
+        <%})%>
+
+        let graph_<%=key%> = new Chart(ctx_<%=key%>, {
+            type: 'bar',
+            data: {
+                labels: labels_<%=key%>,
+                datasets: [{
+                    label: 'Marks in <%=key%>',
+                    data: data_<%=key%>,
+                    borderWidth: 1,
+                    backgroundColor: '#f0f0f0'
+                    
+                }]
+            },
+
+            options: {
+                legend: {
+                    labels: {
+                        fontColor: "white",
+                        fontSize: 18
+                        
+                    }
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true,
+                            fontColor: "#f0f0f0"
+                        }
+                    }],
+                        xAxes: [{
+                            ticks: {
+                                fontColor: "#f0f0f0"
+                                
+                            }
+                        }]
+                },
+                responsive: false,
+                maintainAspectRatio: true
+            }
+        });
+    </script>
+
+    <%});%>
+
+
+    <div class="row">
+      
+
+      <div class="floating-box">
+            <h4>Attendance</h4>
+        <canvas id="attendance" width="400" height="400"></canvas>
+      </div>
+    </div>
+
+    <script>
+        var ctx_attendance = document.getElementById('attendance').getContext('2d');
+
+        var pie_attendance = new Chart(ctx_attendance, {
+            type: 'pie',
+            data: {
+                labels: ['attended classes', 'missed classes'],
+                datasets: [{
+                    data: [<%=info.attendance['attended']%>, <%=info.attendance['total'] -
+                    info.attendance['attended']%>],
+                    backgroundColor: ['#f0f0f0', '#2f2f2f'],
+                    borderWidth: 1,
+                    fontColor: '#f0f0f0'
+                }]
+            },
+            options: {
+                responsive: false,
+                maintainAspectRatio: true
+            }
+        })
+    </script>
+  </div>
+
+  <%- include("partials/scripts") %>
+</body>
+</html>

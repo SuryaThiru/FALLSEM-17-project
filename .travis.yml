@@ -1,0 +1,12 @@
+language: node_js
+
+node_js:
+  - "node"
+
+before_script: 
+    - cd app
+    - chmod -R 777 node_modules
+    - npm install
+
+script:
+    - npm run start &
